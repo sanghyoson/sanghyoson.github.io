@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title> - Articles</title>
+    <description>백엔드 개발자가 되기 위한 발자취를 남기는 곳</description>
+    <link>
+    http://localhost:4000</link>
+    
+      
+      <item>
+        <title>Python 강좌(2) - Python 제어문</title>
+        
+          <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;./python-first&quot;&gt;Python 강좌(1) - Python 기본&lt;/a&gt;&lt;/li&gt;              &lt;!-- 파일의 날짜 들어가면 안된다 --&gt;
+    &lt;li&gt;&lt;a href=&quot;./python-control-statement&quot;&gt;Python 강좌(2) - Python 제어문&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        
+        <pubDate>Wed, 29 Sep 2021 01:40:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/python-control-statement</link>
+        <guid isPermaLink="true">http://localhost:4000/python-control-statement</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Python 강좌(1) - Python 기본</title>
+        
+          <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;./python-first&quot;&gt;Python 강좌(1) - Python 기본&lt;/a&gt;&lt;/li&gt;              &lt;!-- 파일의 날짜 들어가면 안된다 --&gt;
+    &lt;li&gt;&lt;a href=&quot;./python-control-statement&quot;&gt;Python 강좌(2) - Python 제어문&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        
+        <pubDate>Tue, 28 Sep 2021 01:40:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/python-first</link>
+        <guid isPermaLink="true">http://localhost:4000/python-first</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Jekyll 강좌(1) - Jekyll 기본</title>
+        
+          <description>&lt;p&gt;이 글은 Jekyll basic 입니다.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 27 Sep 2021 01:40:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/jekyll-first</link>
+        <guid isPermaLink="true">http://localhost:4000/jekyll-first</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Gettysburg Address</title>
+        
+          <description>&lt;p&gt;Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Thu, 19 Nov 1863 19:18:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/gettysburg-address</link>
+        <guid isPermaLink="true">http://localhost:4000/gettysburg-address</guid>
+      </item>
+      
+    
+  </channel>
+</rss>
