@@ -28,6 +28,9 @@
     <!-- 웹폰트 추가 -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
 
+    <!-- syntax.css 추가 -->
+    <link rel="stylesheet" href="/assets/built/syntax.css">
+
     <!-- highlight.js -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
     <style>.hljs { background: none; }</style>
@@ -53,7 +56,7 @@
     <meta property="og:site_name" content="Backend Follow-up" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Python 강좌(1) - Python 기본" />
-    <meta property="og:description" content="Python 강좌는 여러 절로 구성되어 있습니다. Python 강좌(1) - Python 기본 Python 강좌(2) - Python 제어문 이 글은 Python basic 입니다. Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal." />
+    <meta property="og:description" content="Python 강좌는 여러 절로 구성되어 있습니다. Python 강좌(1) - Python 기본 Python 강좌(2) - Python 제어문 이 글은 Python basic 입니다. function syntaxHighlight(code) { var foo = 'Hello World'; var bar = 100; } Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived" />
     <meta property="og:url" content="http://localhost:4000/python-first" />
     <meta property="og:image" content="http://localhost:4000/assets/built/images/python-logo.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
@@ -63,7 +66,7 @@
     <meta property="article:tag" content="Python" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Python 강좌(1) - Python 기본" />
-    <meta name="twitter:description" content="Python 강좌는 여러 절로 구성되어 있습니다. Python 강좌(1) - Python 기본 Python 강좌(2) - Python 제어문 이 글은 Python basic 입니다. Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal." />
+    <meta name="twitter:description" content="Python 강좌는 여러 절로 구성되어 있습니다. Python 강좌(1) - Python 기본 Python 강좌(2) - Python 제어문 이 글은 Python basic 입니다. function syntaxHighlight(code) { var foo = 'Hello World'; var bar = 100; } Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/built/images/python-logo.png" />
     <meta name="twitter:label1" content="Written by" />
@@ -95,7 +98,7 @@
         "@type": "WebPage",
         "@id": "http://localhost:4000/python-first"
     },
-    "description": "Python 강좌는 여러 절로 구성되어 있습니다. Python 강좌(1) - Python 기본 Python 강좌(2) - Python 제어문 이 글은 Python basic 입니다. Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal."
+    "description": "Python 강좌는 여러 절로 구성되어 있습니다. Python 강좌(1) - Python 기본 Python 강좌(2) - Python 제어문 이 글은 Python basic 입니다. function syntaxHighlight(code) { var foo = 'Hello World'; var bar = 100; } Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived"
 }
     </script>
 
@@ -151,7 +154,7 @@ into the {body} of the default.hbs template -->
             
         </div>
         
-            <a class="subscribe-button" href="#subscribe">Subscribe</a>
+            <a class="subscribe-button" href="#subscribe">Search</a>
         
     </div>
 </nav>
@@ -199,6 +202,12 @@ into the {body} of the default.hbs template -->
 
 <p>이 글은 Python basic 입니다.</p>
 
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">syntaxHighlight</span><span class="p">(</span><span class="nx">code</span><span class="p">)</span> <span class="p">{</span>
+   <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Hello World</span><span class="dl">'</span><span class="p">;</span>
+   <span class="kd">var</span> <span class="nx">bar</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
 <p>Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.</p>
 
 <p>Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.</p>
@@ -215,16 +224,25 @@ into the {body} of the default.hbs template -->
                 <section class="subscribe-form">
                     <h3 class="subscribe-form-title">Subscribe to Backend Follow-up</h3>
                     <p>Get the latest posts delivered right to your inbox</p>
-                    <form method="post" action="/subscribe/" class="">
-    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+                    <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
 
     <div class="form-group">
-        <input class="subscribe-email" type="email" name="email"  placeholder="youremail@example.com" />
+        <input class="subscribe-email" onkeyup="myFunc()"
+               id="searchtext" type="text" name="searchtext"
+               placeholder="Search..." />
     </div>
-    <button class="" type="submit" disabled><span>Subscribe</span></button>
-    <script type="text/javascript">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>
-</form>
-
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
                 </section>
             
             -->
@@ -518,18 +536,28 @@ into the {body} of the default.hbs template -->
             <a class="subscribe-overlay-close" href="#"></a>
             <div class="subscribe-overlay-content">
                 
-                <h1 class="subscribe-overlay-title">Subscribe to Backend Follow-up</h1>
-                <p class="subscribe-overlay-description">Stay up to date! Get all the latest &amp; greatest posts delivered straight to your inbox</p>
-                <form method="post" action="/subscribe/" class="">
-    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+                <h1 class="subscribe-overlay-title">Search Backend Follow-up</h1>
+                <p class="subscribe-overlay-description">
+                    lunr.js를 이용한 posts 검색 </p>
+                <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
 
     <div class="form-group">
-        <input class="subscribe-email" type="email" name="email"  placeholder="youremail@example.com" />
+        <input class="subscribe-email" onkeyup="myFunc()"
+               id="searchtext" type="text" name="searchtext"
+               placeholder="Search..." />
     </div>
-    <button class="" type="submit" disabled><span>Subscribe</span></button>
-    <script type="text/javascript">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>
-</form>
-
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
             </div>
         </div>
     
