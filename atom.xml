@@ -21,7 +21,9 @@
 &lt;/ul&gt;
 &lt;p&gt;&lt;br /&gt;
 &lt;img src=&quot;../assets/built/images/internet.jpg&quot; alt=&quot;인터넷 사진&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;
-&lt;strong&gt;인터넷&lt;/strong&gt;이란 Web의 가장 핵심적인 기술이라고 할 수 있다. 인터넷이라는 개념이 모호하긴 한데 무수히 많은 컴퓨터간 통신할 수 있도록 하는 &lt;strong&gt;거대한 네트워크&lt;/strong&gt;이다.&lt;/p&gt;
+&lt;strong&gt;인터넷&lt;/strong&gt;(Internet)이란 International Network의 줄임말로 Web의 가장 핵심적인 기술이라고 할 수 있다. 
+기본적으로, 인터넷이란 무수히 많은 컴퓨터들이 통신할 수 있도록 하는 &lt;strong&gt;거대한 네트워크 통신망&lt;/strong&gt;이다.
+수많은 컴퓨터들이 통신하기 위해서 컴퓨터 &lt;strong&gt;TCP/IP&lt;/strong&gt;를 이용하는데 이 장에서는 인터넷이 기본적으로 어떻게 작동하는지만 다룬다.&lt;/p&gt;
 
 </description>
         
