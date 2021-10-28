@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/author/sanghyoson/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2021-10-12T19:40:17+09:00</updated>
+  <updated>2021-10-28T22:54:38+09:00</updated>
   <id>http://localhost:4000/author/sanghyoson/feed.xml</id>
 
   
@@ -32,19 +32,98 @@
 
   
     <entry>
+      <title type="html">인터넷(2) - HTTP는 무엇인가?</title>
+      <link href="http://localhost:4000/roadmap-http" rel="alternate" type="text/html" title="인터넷(2) - HTTP는 무엇인가?" />
+      <published>2021-10-12T21:40:00+09:00</published>
+      <updated>2021-10-12T21:40:00+09:00</updated>
+      <id>http://localhost:4000/roadmap-http</id>
+      <content type="html" xml:base="http://localhost:4000/roadmap-http">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Backend Internet 내용은 다음과 같은 내용으로 구성된다. &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;./roadmap-internet&quot;&gt;인터넷 관련 내용(1) - 인터넷은 어떻게 작동하는가?&lt;/a&gt;&lt;/li&gt;              &lt;!-- 파일의 날짜 들어가면 안된다 --&gt;
+    &lt;li&gt;&lt;a href=&quot;./roadmap-http&quot;&gt;인터넷 관련 내용(2) - HTTP가 무엇인가?&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./roadmap-browser&quot;&gt;인터넷 관련 내용(3) - 브라우저와 작동 원리&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./roadmap-dns&quot;&gt;인터넷 관련 내용(4) - DNS와 작동 원리&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./roadmap-domain-name&quot;&gt;인터넷 관련 내용(5) - 도메인 네임은 무엇인가?&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./roadmap-hosting&quot;&gt;인터넷 관련 내용(6) - 호스팅은 무엇인가?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;
+&lt;img src=&quot;../assets/built/images/internet.jpg&quot; alt=&quot;인터넷 사진&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;HTTP&lt;/strong&gt;(HyperText Transfer Protocol)의 약어로서 웹 상에서 정보를 주고받을 수 있는 &lt;strong&gt;프로토콜&lt;/strong&gt;이다. 텍스트 기반으로 이루어져 있으며 약속과 같은 통신 규약을 정하였기 때문에 이 규약에 맞추어 정보를 주고 받을 수 있게 된다.
+HTTP는 &lt;strong&gt;클라이언트&lt;/strong&gt;(Client)와 &lt;strong&gt;서버&lt;/strong&gt;(Server) 사이에 이루어지는 요청과 응답을 위한 프로토콜이다. 웹에서 클라이언트인 웹 브라우저(Web Browser)가 HTTP를 통해 서버에게 웹페이지(HTML, 그림 정보) 등을 요청하면, 서버는 이 요청에 응답하여 필요한 정보를 해당 정보를 필요로하는 사용자에게 전달한다. 비유적으로 설명을 하면, 우리가 물건을 구매할 때 클라이언트와 서버는 각각 우리와 점원이라고 생각할 수 있으며, 이때 구매하는 물건을 HTML이라는 정보라고 볼 수 있다. 물건을 요청하고 요청에 대한 응답을 HTTP라고 생각하면 이해가 쉽다.
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2&gt;메시지 포맷&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt;
+HTTP는 ASCII 메시지로 이루어진다.&lt;/p&gt;
+&lt;h4&gt;요청 메시지&lt;/h4&gt;
+&lt;p&gt;&lt;br /&gt;
+클라이언트가 서버에게 보내는 요청 메시지는 ‘요청 내용’, ‘헤더’, ‘빈줄’, ‘기타 내용’ 등을 포함한다.
+요청 내용 종류는 다음과 같은 것들이 있다.&lt;/p&gt;
+
+&lt;ul class=&quot;data-contents&quot;&gt;
+    &lt;li&gt;GET : 자료 요청&lt;/li&gt;
+    &lt;li&gt;POST : 자료 생성 요청&lt;/li&gt;
+    &lt;li&gt;PUT : 자료 수정 요청&lt;/li&gt;
+    &lt;li&gt;DELETE : 자료의 삭제 요청&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h4&gt;응답 메시지&lt;/h4&gt;
+&lt;p&gt;&lt;br /&gt;
+서버가 클라이언트에게 전송하는 메시지에는 ‘상태코드’, ‘헤더’, ‘빈줄’, ‘기타 내용’을 포함한다.
+요청 메시지와 달리 응답은 상태코드로 전송되며 상태 코드 종류는 다음과 같다.&lt;/p&gt;
+
+&lt;ul class=&quot;data-contents&quot;&gt;
+    &lt;li&gt;1XX (정보) : 정보 교환, 일부 요청을 받았음을 의미&lt;/li&gt;
+    &lt;li&gt;2XX (성공) : 데이터 전송이 성공적이거나, 수락되었음을 의미&lt;/li&gt;
+    &lt;li&gt;3XX (Redirection) : 바료의 위치가 바뀌었음을 의미&lt;/li&gt;
+    &lt;li&gt;4XX (요청 오류) : 클라이언트 측 오류&lt;/li&gt;
+    &lt;li&gt;5XX (서버 오류) : 서버 측 오류&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>sanghyoson</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="roadmap" />
+      
+        <category term="internet" />
+      
+
+      
+        <summary type="html">Backend Internet 내용은 다음과 같은 내용으로 구성된다. 인터넷 관련 내용(1) - 인터넷은 어떻게 작동하는가? 인터넷 관련 내용(2) - HTTP가 무엇인가? 인터넷 관련 내용(3) - 브라우저와 작동 원리 인터넷 관련 내용(4) - DNS와 작동 원리 인터넷 관련 내용(5) - 도메인 네임은 무엇인가? 인터넷 관련 내용(6) - 호스팅은 무엇인가?</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
       <title type="html">인터넷(1) - 인터넷은 어떻게 작동하는가?</title>
-      <link href="http://localhost:4000/backend-internet" rel="alternate" type="text/html" title="인터넷(1) - 인터넷은 어떻게 작동하는가?" />
+      <link href="http://localhost:4000/roadmap-internet" rel="alternate" type="text/html" title="인터넷(1) - 인터넷은 어떻게 작동하는가?" />
       <published>2021-10-11T01:40:00+09:00</published>
       <updated>2021-10-11T01:40:00+09:00</updated>
-      <id>http://localhost:4000/backend-internet</id>
-      <content type="html" xml:base="http://localhost:4000/backend-internet">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Backend Internet 내용은 다음과 같은 내용으로 구성된다. &lt;/span&gt;&lt;/p&gt;
+      <id>http://localhost:4000/roadmap-internet</id>
+      <content type="html" xml:base="http://localhost:4000/roadmap-internet">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Backend Internet 내용은 다음과 같은 내용으로 구성된다. &lt;/span&gt;&lt;/p&gt;
 &lt;ul class=&quot;table-of-contents-list&quot;&gt;
-    &lt;li&gt;&lt;a href=&quot;./backend-internet&quot;&gt;인터넷 관련 내용(1) - 인터넷은 어떻게 작동하는가?&lt;/a&gt;&lt;/li&gt;              &lt;!-- 파일의 날짜 들어가면 안된다 --&gt;
-    &lt;li&gt;&lt;a href=&quot;./backend-http&quot;&gt;인터넷 관련 내용(2) - HTTP가 무엇일까?&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./backend-browser&quot;&gt;인터넷 관련 내용(3) - 브라우저와 작동 원리&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./backend-dns&quot;&gt;인터넷 관련 내용(4) - DNS와 작동 원리&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./backend-domain-name&quot;&gt;인터넷 관련 내용(5) - 도메인 네임은 무엇인가?&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./backend-hosting&quot;&gt;인터넷 관련 내용(6) - 호스팅은 무엇인가?&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./roadmap-internet&quot;&gt;인터넷 관련 내용(1) - 인터넷은 어떻게 작동하는가?&lt;/a&gt;&lt;/li&gt;              &lt;!-- 파일의 날짜 들어가면 안된다 --&gt;
+    &lt;li&gt;&lt;a href=&quot;./roadmap-http&quot;&gt;인터넷 관련 내용(2) - HTTP가 무엇인가?&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./roadmap-browser&quot;&gt;인터넷 관련 내용(3) - 브라우저와 작동 원리&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./roadmap-dns&quot;&gt;인터넷 관련 내용(4) - DNS와 작동 원리&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./roadmap-domain-name&quot;&gt;인터넷 관련 내용(5) - 도메인 네임은 무엇인가?&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./roadmap-hosting&quot;&gt;인터넷 관련 내용(6) - 호스팅은 무엇인가?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;br /&gt;
 &lt;img src=&quot;../assets/built/images/internet.jpg&quot; alt=&quot;인터넷 사진&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;
@@ -86,7 +165,11 @@
 따라서, 이미 구축되어 있는 전화 시스템과 라우터를 이용하여 구축한 네트워크를 연결할 수 있는 &lt;strong&gt;모뎀&lt;/strong&gt;이라는 장비를 이용한다.
 모뎀을 통해서 인터넷 서비스 제공 업체(Internet Service Provider, &lt;strong&gt;ISP&lt;/strong&gt;)에 접근할 수 있고, ISP가 구축한 네트워크를 통해 접근하려는 대상 네트워크로 접근이 가능하게 된다.
 이러한 전체적인 네트워크 인프라로 인터넷은 구성된다.
-&lt;img src=&quot;../assets/built/images/internet_network_6_internet.jpg&quot; alt=&quot;인터넷 통신 네트워크&quot; width=&quot;200 %&quot; height=&quot;200%&quot; /&gt;&lt;/p&gt;</content>
+&lt;img src=&quot;../assets/built/images/internet_network_6_internet.jpg&quot; alt=&quot;인터넷 통신 네트워크&quot; width=&quot;200 %&quot; height=&quot;200%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h2&gt;참고 사이트&lt;/h2&gt;
+&lt;p&gt;   &lt;i class=&quot;fa fa-search&quot;&gt; &lt;/i&gt; &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Learn/Common_questions/How_does_the_Internet_work&quot;&gt;MDN Web Docs&lt;/a&gt;&lt;/p&gt;</content>
 
       
       
@@ -103,271 +186,13 @@
       
 
       
-        <category term="backend" />
+        <category term="roadmap" />
       
         <category term="internet" />
       
 
       
-        <summary type="html">Backend Internet 내용은 다음과 같은 내용으로 구성된다. 인터넷 관련 내용(1) - 인터넷은 어떻게 작동하는가? 인터넷 관련 내용(2) - HTTP가 무엇일까? 인터넷 관련 내용(3) - 브라우저와 작동 원리 인터넷 관련 내용(4) - DNS와 작동 원리 인터넷 관련 내용(5) - 도메인 네임은 무엇인가? 인터넷 관련 내용(6) - 호스팅은 무엇인가? 인터넷(Internet)이란 International Network의 줄임말로 Web의 가장 핵심적인 기술이라고 할 수 있다. 기본적으로, 인터넷이란 무수히 많은 컴퓨터들이 통신할 수 있도록 하는 거대한 네트워크 통신망이다. 수많은 컴퓨터들이 통신하기 위해서 컴퓨터 TCP/IP를 이용하는데 이 장에서는 인터넷이 기본적으로 어떻게 작동하는지만 다룬다.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">Python 강좌(2) - Python 제어문</title>
-      <link href="http://localhost:4000/python-control-statement" rel="alternate" type="text/html" title="Python 강좌(2) - Python 제어문" />
-      <published>2021-09-29T01:40:00+09:00</published>
-      <updated>2021-09-29T01:40:00+09:00</updated>
-      <id>http://localhost:4000/python-control-statement</id>
-      <content type="html" xml:base="http://localhost:4000/python-control-statement">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
-&lt;ul class=&quot;table-of-contents-list&quot;&gt;
-    &lt;li&gt;&lt;a href=&quot;./python-first&quot;&gt;Python 강좌(1) - Python 기본&lt;/a&gt;&lt;/li&gt;              &lt;!-- 파일의 날짜 들어가면 안된다 --&gt;
-    &lt;li&gt;&lt;a href=&quot;./python-control-statement&quot;&gt;Python 강좌(2) - Python 제어문&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;이 글은 Python 제어문 관련 내용 입니다.&lt;/p&gt;
-
-&lt;p&gt;Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.&lt;/p&gt;
-
-&lt;p&gt;Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.&lt;/p&gt;
-
-&lt;p&gt;But, in a larger sense, we can not dedicate-we can not consecrate-we can not hallow-this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us-that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion-that we here highly resolve that these dead shall not have died in vain-that this nation, under God, shall have a new birth of freedom-and that government of the people, by the people, for the people shall not perish from the earth.&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>sanghyoson</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="python" />
-      
-
-      
-        <summary type="html">Python 강좌는 여러 절로 구성되어 있습니다. Python 강좌(1) - Python 기본 Python 강좌(2) - Python 제어문</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">Python 강좌(1) - Python 기본</title>
-      <link href="http://localhost:4000/python-first" rel="alternate" type="text/html" title="Python 강좌(1) - Python 기본" />
-      <published>2021-09-28T01:40:00+09:00</published>
-      <updated>2021-09-28T01:40:00+09:00</updated>
-      <id>http://localhost:4000/python-first</id>
-      <content type="html" xml:base="http://localhost:4000/python-first">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
-&lt;ul class=&quot;table-of-contents-list&quot;&gt;
-    &lt;li&gt;&lt;a href=&quot;./python-first&quot;&gt;Python 강좌(1) - Python 기본&lt;/a&gt;&lt;/li&gt;              &lt;!-- 파일의 날짜 들어가면 안된다 --&gt;
-    &lt;li&gt;&lt;a href=&quot;./python-control-statement&quot;&gt;Python 강좌(2) - Python 제어문&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;이 글은 Python basic 입니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;syntaxHighlight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-   &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Hello World&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-   &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.&lt;/p&gt;
-
-&lt;p&gt;Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.&lt;/p&gt;
-
-&lt;p&gt;But, in a larger sense, we can not dedicate-we can not consecrate-we can not hallow-this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us-that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion-that we here highly resolve that these dead shall not have died in vain-that this nation, under God, shall have a new birth of freedom-and that government of the people, by the people, for the people shall not perish from the earth.&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>sanghyoson</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="python" />
-      
-
-      
-        <summary type="html">Python 강좌는 여러 절로 구성되어 있습니다. Python 강좌(1) - Python 기본 Python 강좌(2) - Python 제어문</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">Jekyll 강좌(1) - Jekyll 기본</title>
-      <link href="http://localhost:4000/jekyll-first" rel="alternate" type="text/html" title="Jekyll 강좌(1) - Jekyll 기본" />
-      <published>2021-09-27T01:40:00+09:00</published>
-      <updated>2021-09-27T01:40:00+09:00</updated>
-      <id>http://localhost:4000/jekyll-first</id>
-      <content type="html" xml:base="http://localhost:4000/jekyll-first">&lt;p&gt;이 글은 Jekyll basic 입니다.&lt;/p&gt;
-
-&lt;p&gt;Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.&lt;/p&gt;
-
-&lt;p&gt;Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.&lt;/p&gt;
-
-&lt;p&gt;But, in a larger sense, we can not dedicate-we can not consecrate-we can not hallow-this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us-that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion-that we here highly resolve that these dead shall not have died in vain-that this nation, under God, shall have a new birth of freedom-and that government of the people, by the people, for the people shall not perish from the earth.&lt;/p&gt;
-
-&lt;p&gt;Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.&lt;/p&gt;
-
-&lt;p&gt;Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.&lt;/p&gt;
-
-&lt;p&gt;But, in a larger sense, we can not dedicate-we can not consecrate-we can not hallow-this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us-that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion-that we here highly resolve that these dead shall not have died in vain-that this nation, under God, shall have a new birth of freedom-and that government of the people, by the people, for the people shall not perish from the earth.&lt;/p&gt;
-
-&lt;p&gt;Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.&lt;/p&gt;
-
-&lt;p&gt;Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.&lt;/p&gt;
-
-&lt;p&gt;But, in a larger sense, we can not dedicate-we can not consecrate-we can not hallow-this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us-that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion-that we here highly resolve that these dead shall not have died in vain-that this nation, under God, shall have a new birth of freedom-and that government of the people, by the people, for the people shall not perish from the earth.&lt;/p&gt;
-
-&lt;p&gt;Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.&lt;/p&gt;
-
-&lt;p&gt;Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.&lt;/p&gt;
-
-&lt;p&gt;But, in a larger sense, we can not dedicate-we can not consecrate-we can not hallow-this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us-that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion-that we here highly resolve that these dead shall not have died in vain-that this nation, under God, shall have a new birth of freedom-and that government of the people, by the people, for the people shall not perish from the earth.&lt;/p&gt;
-
-&lt;p&gt;Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.&lt;/p&gt;
-
-&lt;p&gt;Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.&lt;/p&gt;
-
-&lt;p&gt;But, in a larger sense, we can not dedicate-we can not consecrate-we can not hallow-this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us-that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion-that we here highly resolve that these dead shall not have died in vain-that this nation, under God, shall have a new birth of freedom-and that government of the people, by the people, for the people shall not perish from the earth.&lt;/p&gt;
-
-&lt;p&gt;Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.&lt;/p&gt;
-
-&lt;p&gt;Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.&lt;/p&gt;
-
-&lt;p&gt;But, in a larger sense, we can not dedicate-we can not consecrate-we can not hallow-this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us-that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion-that we here highly resolve that these dead shall not have died in vain-that this nation, under God, shall have a new birth of freedom-and that government of the people, by the people, for the people shall not perish from the earth.&lt;/p&gt;
-
-&lt;p&gt;Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.&lt;/p&gt;
-
-&lt;p&gt;Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.&lt;/p&gt;
-
-&lt;p&gt;But, in a larger sense, we can not dedicate-we can not consecrate-we can not hallow-this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us-that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion-that we here highly resolve that these dead shall not have died in vain-that this nation, under God, shall have a new birth of freedom-and that government of the people, by the people, for the people shall not perish from the earth.&lt;/p&gt;
-
-&lt;p&gt;Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.&lt;/p&gt;
-
-&lt;p&gt;Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.&lt;/p&gt;
-
-&lt;p&gt;But, in a larger sense, we can not dedicate-we can not consecrate-we can not hallow-this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us-that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion-that we here highly resolve that these dead shall not have died in vain-that this nation, under God, shall have a new birth of freedom-and that government of the people, by the people, for the people shall not perish from the earth.&lt;/p&gt;
-
-&lt;p&gt;Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.&lt;/p&gt;
-
-&lt;p&gt;Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.&lt;/p&gt;
-
-&lt;p&gt;But, in a larger sense, we can not dedicate-we can not consecrate-we can not hallow-this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us-that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion-that we here highly resolve that these dead shall not have died in vain-that this nation, under God, shall have a new birth of freedom-and that government of the people, by the people, for the people shall not perish from the earth.&lt;/p&gt;
-
-&lt;p&gt;Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.&lt;/p&gt;
-
-&lt;p&gt;Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.&lt;/p&gt;
-
-&lt;p&gt;But, in a larger sense, we can not dedicate-we can not consecrate-we can not hallow-this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us-that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion-that we here highly resolve that these dead shall not have died in vain-that this nation, under God, shall have a new birth of freedom-and that government of the people, by the people, for the people shall not perish from the earth.&lt;/p&gt;
-
-&lt;p&gt;Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.&lt;/p&gt;
-
-&lt;p&gt;Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.&lt;/p&gt;
-
-&lt;p&gt;But, in a larger sense, we can not dedicate-we can not consecrate-we can not hallow-this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us-that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion-that we here highly resolve that these dead shall not have died in vain-that this nation, under God, shall have a new birth of freedom-and that government of the people, by the people, for the people shall not perish from the earth.&lt;/p&gt;
-
-&lt;p&gt;Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.&lt;/p&gt;
-
-&lt;p&gt;Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.&lt;/p&gt;
-
-&lt;p&gt;But, in a larger sense, we can not dedicate-we can not consecrate-we can not hallow-this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us-that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion-that we here highly resolve that these dead shall not have died in vain-that this nation, under God, shall have a new birth of freedom-and that government of the people, by the people, for the people shall not perish from the earth.&lt;/p&gt;
-
-&lt;p&gt;Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.&lt;/p&gt;
-
-&lt;p&gt;Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.&lt;/p&gt;
-
-&lt;p&gt;But, in a larger sense, we can not dedicate-we can not consecrate-we can not hallow-this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us-that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion-that we here highly resolve that these dead shall not have died in vain-that this nation, under God, shall have a new birth of freedom-and that government of the people, by the people, for the people shall not perish from the earth.&lt;/p&gt;
-
-&lt;p&gt;Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.&lt;/p&gt;
-
-&lt;p&gt;Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.&lt;/p&gt;
-
-&lt;p&gt;But, in a larger sense, we can not dedicate-we can not consecrate-we can not hallow-this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us-that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion-that we here highly resolve that these dead shall not have died in vain-that this nation, under God, shall have a new birth of freedom-and that government of the people, by the people, for the people shall not perish from the earth.&lt;/p&gt;
-
-&lt;p&gt;Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.&lt;/p&gt;
-
-&lt;p&gt;Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.&lt;/p&gt;
-
-&lt;p&gt;But, in a larger sense, we can not dedicate-we can not consecrate-we can not hallow-this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us-that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion-that we here highly resolve that these dead shall not have died in vain-that this nation, under God, shall have a new birth of freedom-and that government of the people, by the people, for the people shall not perish from the earth.&lt;/p&gt;
-
-&lt;p&gt;Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.&lt;/p&gt;
-
-&lt;p&gt;Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.&lt;/p&gt;
-
-&lt;p&gt;But, in a larger sense, we can not dedicate-we can not consecrate-we can not hallow-this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us-that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion-that we here highly resolve that these dead shall not have died in vain-that this nation, under God, shall have a new birth of freedom-and that government of the people, by the people, for the people shall not perish from the earth.&lt;/p&gt;
-
-&lt;p&gt;Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.&lt;/p&gt;
-
-&lt;p&gt;Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.&lt;/p&gt;
-
-&lt;p&gt;But, in a larger sense, we can not dedicate-we can not consecrate-we can not hallow-this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us-that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion-that we here highly resolve that these dead shall not have died in vain-that this nation, under God, shall have a new birth of freedom-and that government of the people, by the people, for the people shall not perish from the earth.&lt;/p&gt;
-
-&lt;p&gt;Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.&lt;/p&gt;
-
-&lt;p&gt;Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.&lt;/p&gt;
-
-&lt;p&gt;But, in a larger sense, we can not dedicate-we can not consecrate-we can not hallow-this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us-that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion-that we here highly resolve that these dead shall not have died in vain-that this nation, under God, shall have a new birth of freedom-and that government of the people, by the people, for the people shall not perish from the earth.&lt;/p&gt;
-
-&lt;p&gt;Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.&lt;/p&gt;
-
-&lt;p&gt;Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.&lt;/p&gt;
-
-&lt;p&gt;But, in a larger sense, we can not dedicate-we can not consecrate-we can not hallow-this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us-that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion-that we here highly resolve that these dead shall not have died in vain-that this nation, under God, shall have a new birth of freedom-and that government of the people, by the people, for the people shall not perish from the earth.&lt;/p&gt;
-
-&lt;p&gt;Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.&lt;/p&gt;
-
-&lt;p&gt;Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.&lt;/p&gt;
-
-&lt;p&gt;But, in a larger sense, we can not dedicate-we can not consecrate-we can not hallow-this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us-that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion-that we here highly resolve that these dead shall not have died in vain-that this nation, under God, shall have a new birth of freedom-and that government of the people, by the people, for the people shall not perish from the earth.&lt;/p&gt;
-
-&lt;p&gt;Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.&lt;/p&gt;
-
-&lt;p&gt;Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.&lt;/p&gt;
-
-&lt;p&gt;But, in a larger sense, we can not dedicate-we can not consecrate-we can not hallow-this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us-that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion-that we here highly resolve that these dead shall not have died in vain-that this nation, under God, shall have a new birth of freedom-and that government of the people, by the people, for the people shall not perish from the earth.&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>sanghyoson</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="jekyll" />
-      
-
-      
-        <summary type="html">이 글은 Jekyll basic 입니다.</summary>
+        <summary type="html">Backend Internet 내용은 다음과 같은 내용으로 구성된다. 인터넷 관련 내용(1) - 인터넷은 어떻게 작동하는가? 인터넷 관련 내용(2) - HTTP가 무엇인가? 인터넷 관련 내용(3) - 브라우저와 작동 원리 인터넷 관련 내용(4) - DNS와 작동 원리 인터넷 관련 내용(5) - 도메인 네임은 무엇인가? 인터넷 관련 내용(6) - 호스팅은 무엇인가? 인터넷(Internet)이란 International Network의 줄임말로 Web의 가장 핵심적인 기술이라고 할 수 있다. 기본적으로, 인터넷이란 무수히 많은 컴퓨터들이 통신할 수 있도록 하는 거대한 네트워크 통신망이다. 수많은 컴퓨터들이 통신하기 위해서 컴퓨터 TCP/IP를 이용하는데 이 장에서는 인터넷이 기본적으로 어떻게 작동하는지만 다룬다.</summary>
       
 
       
