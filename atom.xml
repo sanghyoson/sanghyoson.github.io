@@ -8,6 +8,48 @@
     
       
       <item>
+        <title>인터넷(3) - 브라우저와 작동 원리</title>
+        
+          <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Backend Internet 내용은 다음과 같은 내용으로 구성된다. &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;./roadmap-internet&quot;&gt;인터넷 관련 내용(1) - 인터넷은 어떻게 작동하는가?&lt;/a&gt;&lt;/li&gt;              &lt;!-- 파일의 날짜 들어가면 안된다 --&gt;
+    &lt;li&gt;&lt;a href=&quot;./roadmap-http&quot;&gt;인터넷 관련 내용(2) - HTTP가 무엇인가?&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./roadmap-browser&quot;&gt;인터넷 관련 내용(3) - 브라우저와 작동 원리&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./roadmap-dns&quot;&gt;인터넷 관련 내용(4) - DNS와 작동 원리&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./roadmap-domain-name&quot;&gt;인터넷 관련 내용(5) - 도메인 네임은 무엇인가?&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./roadmap-hosting&quot;&gt;인터넷 관련 내용(6) - 호스팅은 무엇인가?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;
+&lt;img src=&quot;../assets/built/images/internet.jpg&quot; alt=&quot;인터넷 사진&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Thu, 04 Nov 2021 21:40:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/roadmap-browser</link>
+        <guid isPermaLink="true">http://localhost:4000/roadmap-browser</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>추석 트래픽 - 알고리즘</title>
+        
+          <description>&lt;p&gt;&lt;i class=&quot;fa fa-search&quot;&gt; &lt;/i&gt; 
+&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/17676&quot;&gt; KAKAO 18' RECRUITMENT - [1차] 추석 트래픽&lt;/a&gt;
+&lt;img src=&quot;../assets/built/images/programmers_logo.jpg&quot; alt=&quot;프로그래머스 사진&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Thu, 04 Nov 2021 21:40:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/programmers-traffic</link>
+        <guid isPermaLink="true">http://localhost:4000/programmers-traffic</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>인터넷(2) - HTTP는 무엇인가?</title>
         
           <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Backend Internet 내용은 다음과 같은 내용으로 구성된다. &lt;/span&gt;&lt;/p&gt;
