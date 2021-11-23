@@ -36,6 +36,22 @@
     </url>
     
     <url>
+        <loc>http://localhost:4000/algorithm-time-complexity.html</loc>
+        
+        <lastmod>2021-11-04T21:40:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/roadmap-http.html</loc>
         
         <lastmod>2021-10-12T21:40:00+09:00</lastmod>

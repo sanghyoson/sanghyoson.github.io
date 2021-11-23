@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/programmers/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2021-11-21T17:22:31+09:00</updated>
+  <updated>2021-11-23T15:05:36+09:00</updated>
   <id>http://localhost:4000/tag/programmers/feed.xml</id>
 
   
@@ -32,8 +32,8 @@
 
   
     <entry>
-      <title type="html">추석 트래픽 - 알고리즘</title>
-      <link href="http://localhost:4000/programmers-traffic" rel="alternate" type="text/html" title="추석 트래픽 - 알고리즘" />
+      <title type="html">프로그래머스 - 추석 트래픽(DP)</title>
+      <link href="http://localhost:4000/programmers-traffic" rel="alternate" type="text/html" title="프로그래머스 - 추석 트래픽(DP)" />
       <published>2021-11-04T21:40:00+09:00</published>
       <updated>2021-11-04T21:40:00+09:00</updated>
       <id>http://localhost:4000/programmers-traffic</id>
@@ -171,9 +171,9 @@
       
 
       
-        <category term="algorithm" />
-      
         <category term="programmers" />
+      
+        <category term="dp" />
       
 
       

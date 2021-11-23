@@ -33,7 +33,7 @@
     
       
       <item>
-        <title>추석 트래픽 - 알고리즘</title>
+        <title>프로그래머스 - 추석 트래픽(DP)</title>
         
           <description>&lt;p&gt;&lt;i class=&quot;fa fa-search&quot;&gt; &lt;/i&gt; 
 &lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/17676&quot;&gt; KAKAO 18' RECRUITMENT - [1차] 추석 트래픽&lt;/a&gt;
@@ -45,6 +45,23 @@
         <link>
         http://localhost:4000/programmers-traffic</link>
         <guid isPermaLink="true">http://localhost:4000/programmers-traffic</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>알고리즘 - 시간복잡도</title>
+        
+          <description>&lt;p&gt;&lt;i class=&quot;fa fa-search&quot;&gt; &lt;/i&gt; 
+&lt;a href=&quot;https://ko.wikipedia.org/wiki/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98&quot;&gt; 알고리즘이란? &lt;/a&gt;
+&lt;img src=&quot;../assets/built/images/algorithm.jpg&quot; alt=&quot;알고리즘 사진&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Thu, 04 Nov 2021 21:40:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/algorithm-time-complexity</link>
+        <guid isPermaLink="true">http://localhost:4000/algorithm-time-complexity</guid>
       </item>
       
     
