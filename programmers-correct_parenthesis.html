@@ -11,7 +11,7 @@
 
 
 
-    <title>프로그래머스 - N으로 표현(DP)</title>
+    <title>프로그래머스 - 올바른 괄호(Queue, Stack)</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -49,23 +49,23 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="백엔드 개발자가 되기 위한 발자취를 남기는 곳" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/built/images/favicon.jpg" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/programmers-N_expression" />
+    <link rel="canonical" href="http://localhost:4000/programmers-correct_parenthesis" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Backend Follow-up" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="프로그래머스 - N으로 표현(DP)" />
+    <meta property="og:title" content="프로그래머스 - 올바른 괄호(Queue, Stack)" />
     <meta property="og:description" content=" " />
-    <meta property="og:url" content="http://localhost:4000/programmers-N_expression" />
+    <meta property="og:url" content="http://localhost:4000/programmers-correct_parenthesis" />
     <meta property="og:image" content="http://localhost:4000/assets/built/images/programmers_logo.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2021-11-05T21:40:00+09:00" />
-    <meta property="article:modified_time" content="2021-11-05T21:40:00+09:00" />
+    <meta property="article:published_time" content="2021-11-06T22:40:00+09:00" />
+    <meta property="article:modified_time" content="2021-11-06T22:40:00+09:00" />
     <meta property="article:tag" content="Programmers" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="프로그래머스 - N으로 표현(DP)" />
+    <meta name="twitter:title" content="프로그래머스 - 올바른 괄호(Queue, Stack)" />
     <meta name="twitter:description" content=" " />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/built/images/programmers_logo.jpg" />
@@ -87,7 +87,7 @@
         "name": "Backend Follow-up",
         "logo": "http://localhost:4000/"
     },
-    "url": "http://localhost:4000/programmers-N_expression",
+    "url": "http://localhost:4000/programmers-correct_parenthesis",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:4000/assets/built/images/programmers_logo.jpg",
@@ -96,7 +96,7 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/programmers-N_expression"
+        "@id": "http://localhost:4000/programmers-correct_parenthesis"
     },
     "description": " "
 }
@@ -111,7 +111,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="프로그래머스 - N으로 표현(DP)" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="프로그래머스 - 올바른 괄호(Queue, Stack)" href="/feed.xml" />
 
 
 </head>
@@ -170,11 +170,11 @@ into the {body} of the default.hbs template -->
 <main id="site-main" class="site-main outer" role="main">
     <div class="inner">
 
-        <article class="post-full  tag-programmers tag-dp post tag-python ">
+        <article class="post-full  tag-programmers tag-queue tag-stack post tag-python ">
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime=" 5 November 2021"> 5 November 2021</time>
+                    <time class="post-full-meta-date" datetime=" 6 November 2021"> 6 November 2021</time>
                     
                         <span class="date-divider">/</span>
                         
@@ -183,12 +183,16 @@ into the {body} of the default.hbs template -->
                             
                         
                             
-                               <a href='/tag/dp/'>DP</a>
+                               <a href='/tag/queue/'>QUEUE</a>,
+                            
+                        
+                            
+                               <a href='/tag/stack/'>STACK</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">프로그래머스 - N으로 표현(DP)</h1>
+                <h1 class="post-full-title">프로그래머스 - 올바른 괄호(Queue, Stack)</h1>
             </header>
 
             <!--
@@ -201,31 +205,25 @@ into the {body} of the default.hbs template -->
             <section class="post-full-content">
                 <div class="kg-card-markdown">
                     <p><i class="fa fa-search"> </i> 
-<a href="https://programmers.co.kr/learn/courses/30/lessons/42895"> Dynamic Programming - N으로 표현</a>
+<a href="https://programmers.co.kr/learn/courses/30/lessons/12909"> Queue / Stack - 올바른 괄호</a>
 <img src="../assets/built/images/programmers_logo.jpg" alt="프로그래머스 사진" width="100%" height="100%" /></p>
 
 <h2>문제 설명</h2>
 <p><br />
-아래와 같이 5와 사칙연산만으로 12를 표현할 수 있습니다.</p>
+괄호가 바르게 짝지어졌다는 것은 ‘(‘ 문자로 열렸으면 반드시 짝지어서 ‘)’ 문자로 닫혀야 한다는 뜻입니다. 예를 들어</p>
+<ul class="data-contents">
+<li>"()()" 또는 "(())()" 는 올바른 괄호입니다.</li>
+<li>")()(" 또는 "(()(" 는 올바르지 않은 괄호입니다.</li>
+</ul>
+<p>’(‘ 또는 ‘)’ 로만 이루어진 문자열 s가 주어졌을 때, 문자열 s가 올바른 괄호이면 true를 return 하고, 올바르지 않은 괄호이면 false를 return 하는 solution 함수를 완성해 주세요.
+<br />
+<br /></p>
 
-<p>12 = 5 + 5 + (5 / 5) + (5 / 5)</p>
-
-<p>12 = 55 / 5 + 5 / 5</p>
-
-<p>12 = (55 + 5) / 5</p>
-
-<p>5를 사용한 횟수는 각각 6,5,4 입니다. 그리고 <strong>이중 가장 작은 경우는 4</strong>입니다.
-이처럼 숫자 N과 number가 주어질 때, N과 사칙연산만 사용해서 표현 할 수 있는 방법 중 N 사용횟수의 최솟값을 return 하도록 solution 함수를 작성하세요.</p>
-
-<p><br /></p>
-
-<h2>입력 형식</h2>
+<h2>제한 사항</h2>
 <ul class="data-contents">
 <br />
-<li>N은 1 이상 9 이하입니다.</li>
-<li>number는 1 이상 32,000 이하입니다.</li>
-<li>수식에는 괄호와 사칙연산만 가능하며 나누기 연산에서 나머지는 무시합니다.</li>
-<li>최솟값이 8보다 크면 -1을 return 합니다.</li>
+<li>문자열 s의 길이 : 100,000 이하의 자연수</li>
+<li>문자열 s는 '(' 또는 ')' 로만 이루어져 있습니다.</li>
 </ul>
 <p><br /></p>
 
@@ -236,58 +234,29 @@ into the {body} of the default.hbs template -->
 </ul>
 <br/> -->
 
-<h2>문제 풀이</h2>
-<p><br />
-N을 최소한으로 이용하여 number를 구해야 하는데, <strong>동일한 개수의 N을 가지고 표현할 수 있는 수는 매우 많다</strong>. 접근방법은 N의 개수를 늘려가며 표현할 수 있는 수를 빈틈없이 계산하고 이 값들 중에서 number가 포함되는지 확인하는 것이다.</p>
-<ol class="data-contents">
-    <li>1. n개의 N을 이용하여 구할 수 있는 수 나열</li>
-    <li>2. 나열된 수 중 number가 존재하는 확인</li>
-</ol>
-<p><br /></p>
-
 <h2>풀이과정</h2>
 <p><br />
-N을 n개를 이용하여 표현할 수 있는 수는 다음과 같이 구할 수 있다.</p>
-
-<blockquote>
-  <p>N을 1개 이용한 집합과 N을 n-1개 이용한 집합의 사칙연산 집합 + N을 2개 이용한 집합과 N을 n-2개 이용한 집합의 사칙연산 집합 …(반복)</p>
-</blockquote>
-
-<p><strong>n이 8이 될 때까지 반복하였을 때, 해당 집합에 number가 존재하는지 확인하면 된다.</strong></p>
+스택과 큐를 이용하여 접근하였다. 아이디어는 다음과 같다. 빈 스택에 입력으로 받은 괄호 문자열을 순차적으로 받았을 때, 스택에 쌓인 전후 쌍을 이루면 스택에서 제거한다. 예로 [’(‘, ‘)’]과 같은 쌍을 이룬다면, [] 쌍을 비우는 방법이다. 해당 방법대로 진행을 하면, 올바른 문자열인 경우 최종적으로 빈 스택만 남게된다.</p>
 
 <p><br /></p>
 
 <h2>최종 코드</h2>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">number</span><span class="p">):</span>
-    <span class="n">answer</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span> <span class="k">as</span> <span class="n">dq</span>
+
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="n">queue</span> <span class="o">=</span> <span class="n">dq</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
     
-    <span class="k">if</span> <span class="n">N</span> <span class="o">==</span> <span class="n">number</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">1</span>
-    
-    <span class="n">dic</span> <span class="o">=</span> <span class="p">[[</span><span class="n">N</span><span class="p">]]</span>
-    <span class="k">for</span> <span class="n">N_num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">):</span>
-        <span class="n">tmp</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">int</span><span class="p">((</span><span class="n">N_num</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)):</span>
-            <span class="n">elements_1</span> <span class="o">=</span> <span class="n">dic</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-            <span class="n">elements_2</span> <span class="o">=</span> <span class="n">dic</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span><span class="p">]</span>
-            
-            <span class="k">for</span> <span class="n">val1</span> <span class="ow">in</span> <span class="n">elements_1</span><span class="p">:</span>
-                <span class="k">for</span> <span class="n">val2</span> <span class="ow">in</span> <span class="n">elements_2</span><span class="p">:</span>
-                    <span class="n">tmp</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">val1</span> <span class="o">+</span> <span class="n">val2</span><span class="p">)</span> 
-                    <span class="n">tmp</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">val1</span> <span class="o">*</span> <span class="n">val2</span><span class="p">)</span>
-                    <span class="n">tmp</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">val1</span> <span class="o">-</span> <span class="n">val2</span> <span class="k">if</span> <span class="n">val1</span> <span class="o">-</span> <span class="n">val2</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
-                    <span class="n">tmp</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">val2</span> <span class="o">-</span> <span class="n">val1</span> <span class="k">if</span> <span class="n">val2</span> <span class="o">-</span> <span class="n">val1</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
-                    <span class="k">if</span> <span class="n">val2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-                        <span class="n">tmp</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">val1</span> <span class="o">/</span> <span class="n">val2</span><span class="p">))</span>
-                    <span class="k">if</span> <span class="n">val1</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-                        <span class="n">tmp</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">val2</span><span class="o">/</span> <span class="n">val1</span><span class="p">))</span>
-            
-        <span class="n">tmp</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="n">N_num</span><span class="p">))</span>
-        <span class="n">dic</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">tmp</span><span class="p">)))</span>
-        
-        <span class="k">if</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">dic</span><span class="p">[</span><span class="n">N_num</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
-            <span class="k">return</span> <span class="n">N_num</span>
-    <span class="k">return</span> <span class="n">answer</span>
+    <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
+        <span class="n">pop</span> <span class="o">=</span> <span class="n">queue</span><span class="p">.</span><span class="n">popleft</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">stack</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s">'('</span> <span class="ow">and</span> <span class="n">pop</span> <span class="o">==</span> <span class="s">')'</span><span class="p">:</span>
+                <span class="n">stack</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">stack</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">True</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span> <span class="k">else</span> <span class="bp">False</span>
 </code></pre></div></div>
 
                 </div>
@@ -355,9 +324,9 @@ N을 n개를 이용하여 표현할 수 있는 수는 다음과 같이 구할 �
                     <div id="disqus_thread"></div>
                     <script>
                         var disqus_config = function () {
-                            var this_page_url = 'http://localhost:4000/programmers-N_expression';
-                            var this_page_identifier = '/programmers-N_expression';
-                            var this_page_title = '프로그래머스 - N으로 표현(DP)';
+                            var this_page_url = 'http://localhost:4000/programmers-correct_parenthesis';
+                            var this_page_identifier = '/programmers-correct_parenthesis';
+                            var this_page_title = '프로그래머스 - 올바른 괄호(Queue, Stack)';
                         };
                         (function() {
                             var d = document, s = d.createElement('script');
@@ -385,6 +354,70 @@ N을 n개를 이용하여 표현할 수 있는 수는 다음과 같이 구할 �
             
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/programmers-rotate_parenthesis-copy">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/programmers_logo.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/programmers-rotate_parenthesis-copy">
+                <header class="post-card-header">
+                    
+                        
+                            
+                               <span class="post-card-tags">Programmers</span>
+                            
+                        
+                            
+                               <span class="post-card-tags">Queue</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Stack</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">프로그래머스 - 괄호 회전하기(Queue, Stack)</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p>  
+ Queue / Stack - 괄호 회전하기
+
+
+</p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/author-logo.png" alt="sanghyoson" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/sanghyoson/">sanghyoson</a>
+                        </span>
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      1 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
                 
 
@@ -448,62 +481,6 @@ N을 n개를 이용하여 표현할 수 있는 수는 다음과 같이 구할 �
 
             
 
-            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
-            
-                
-
-    <article class="post-card post-template">
-        
-            <a class="post-card-image-link" href="/roadmap-browser">
-                <div class="post-card-image" style="background-image: url(/assets/built/images/internet.jpg)"></div>
-            </a>
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/roadmap-browser">
-                <header class="post-card-header">
-                    
-                        
-                            
-                               <span class="post-card-tags">Roadmap</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Internet</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">인터넷(3) - 브라우저와 작동 원리</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p>Backend Internet 내용은 다음과 같은 내용으로 구성된다. 인터넷 관련 내용(1) - 인터넷은 어떻게 작동하는가? 인터넷 관련 내용(2) - HTTP가 무엇인가? 인터넷 관련 내용(3) - 브라우저와 작동 원리 인터넷 관련 내용(4) - DNS와 작동</p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                        
-                        <img class="author-profile-image" src="/assets/built/images/author-logo.png" alt="sanghyoson" />
-                        
-                        <span class="post-card-author">
-                            <a href="/author/sanghyoson/">sanghyoson</a>
-                        </span>
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
-
         </div>
     </div>
 </aside>
@@ -517,18 +494,18 @@ N을 n개를 이용하여 표현할 수 있는 수는 다음과 같이 구할 �
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">프로그래머스 - N으로 표현(DP)</div>
+    <div class="floating-header-title">프로그래머스 - 올바른 괄호(Queue, Stack)</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4+-+N%EC%9C%BC%EB%A1%9C+%ED%91%9C%ED%98%84%28DP%29&amp;url=https://sanghyoson.github.io/programmers-N_expression"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4+-+%EC%98%AC%EB%B0%94%EB%A5%B8+%EA%B4%84%ED%98%B8%28Queue%2C+Stack%29&amp;url=https://sanghyoson.github.io/programmers-correct_parenthesis"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://sanghyoson.github.io/programmers-N_expression"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://sanghyoson.github.io/programmers-correct_parenthesis"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 
