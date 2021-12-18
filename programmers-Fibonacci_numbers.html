@@ -11,7 +11,7 @@
 
 
 
-    <title>프로그래머스 - 괄호 회전하기(Queue, Stack)</title>
+    <title>프로그래머스 - 피보나치 수(DP)</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -49,23 +49,23 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="백엔드 개발자가 되기 위한 발자취를 남기는 곳" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/built/images/favicon.jpg" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/programmers-rotate_parenthesis-copy" />
+    <link rel="canonical" href="http://localhost:4000/programmers-Fibonacci_numbers" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Backend Follow-up" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="프로그래머스 - 괄호 회전하기(Queue, Stack)" />
+    <meta property="og:title" content="프로그래머스 - 피보나치 수(DP)" />
     <meta property="og:description" content=" " />
-    <meta property="og:url" content="http://localhost:4000/programmers-rotate_parenthesis-copy" />
+    <meta property="og:url" content="http://localhost:4000/programmers-Fibonacci_numbers" />
     <meta property="og:image" content="http://localhost:4000/assets/built/images/programmers_logo.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2021-11-06T23:40:00+09:00" />
-    <meta property="article:modified_time" content="2021-11-06T23:40:00+09:00" />
+    <meta property="article:published_time" content="2021-11-07T06:40:00+09:00" />
+    <meta property="article:modified_time" content="2021-11-07T06:40:00+09:00" />
     <meta property="article:tag" content="Programmers" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="프로그래머스 - 괄호 회전하기(Queue, Stack)" />
+    <meta name="twitter:title" content="프로그래머스 - 피보나치 수(DP)" />
     <meta name="twitter:description" content=" " />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/built/images/programmers_logo.jpg" />
@@ -87,7 +87,7 @@
         "name": "Backend Follow-up",
         "logo": "http://localhost:4000/"
     },
-    "url": "http://localhost:4000/programmers-rotate_parenthesis-copy",
+    "url": "http://localhost:4000/programmers-Fibonacci_numbers",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:4000/assets/built/images/programmers_logo.jpg",
@@ -96,7 +96,7 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/programmers-rotate_parenthesis-copy"
+        "@id": "http://localhost:4000/programmers-Fibonacci_numbers"
     },
     "description": " "
 }
@@ -111,7 +111,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="프로그래머스 - 괄호 회전하기(Queue, Stack)" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="프로그래머스 - 피보나치 수(DP)" href="/feed.xml" />
 
 
 </head>
@@ -170,11 +170,11 @@ into the {body} of the default.hbs template -->
 <main id="site-main" class="site-main outer" role="main">
     <div class="inner">
 
-        <article class="post-full  tag-programmers tag-queue tag-stack post tag-python ">
+        <article class="post-full  tag-programmers tag-dp post tag-python ">
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime=" 6 November 2021"> 6 November 2021</time>
+                    <time class="post-full-meta-date" datetime=" 7 November 2021"> 7 November 2021</time>
                     
                         <span class="date-divider">/</span>
                         
@@ -183,16 +183,12 @@ into the {body} of the default.hbs template -->
                             
                         
                             
-                               <a href='/tag/queue/'>QUEUE</a>,
-                            
-                        
-                            
-                               <a href='/tag/stack/'>STACK</a>
+                               <a href='/tag/dp/'>DP</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">프로그래머스 - 괄호 회전하기(Queue, Stack)</h1>
+                <h1 class="post-full-title">프로그래머스 - 피보나치 수(DP)</h1>
             </header>
 
             <!--
@@ -205,25 +201,27 @@ into the {body} of the default.hbs template -->
             <section class="post-full-content">
                 <div class="kg-card-markdown">
                     <p><i class="fa fa-search"> </i> 
-<a href="https://programmers.co.kr/learn/courses/30/lessons/76502"> Queue / Stack - 괄호 회전하기</a>
+<a href="https://programmers.co.kr/learn/courses/30/lessons/42895"> Dynamic Programming - 피보나치 수</a>
 <img src="../assets/built/images/programmers_logo.jpg" alt="프로그래머스 사진" width="100%" height="100%" /></p>
 
 <h2>문제 설명</h2>
 <p><br />
-다음 규칙을 지키는 문자열을 올바른 괄호 문자열이라고 정의합니다.</p>
+피보나치 수는 F(0) = 0, F(1) = 1일 때, 1 이상의 n에 대하여 F(n) = F(n-1) + F(n-2) 가 적용되는 수 입니다.</p>
 <ul class="data-contents">
-<li>(), [], {} 는 모두 올바른 괄호 문자열입니다.</li>
-<li>만약 A가 올바른 괄호 문자열이라면, (A), [A], {A} 도 올바른 괄호 문자열입니다. 예를 들어, [] 가 올바른 괄호 문자열이므로, ([]) 도 올바른 괄호 문자열입니다.</li>
-<li>만약 A, B가 올바른 괄호 문자열이라면, AB 도 올바른 괄호 문자열입니다. 예를 들어, {} 와 ([]) 가 올바른 괄호 문자열이므로, {}([]) 도 올바른 괄호 문자열입니다.</li>
+<li>F(2) = F(0) + F(1) = 0 + 1 = 1</li>
+<li>F(3) = F(1) + F(2) = 1 + 1 = 2</li>
+<li>F(4) = F(2) + F(3) = 1 + 2 = 3</li>
+<li>F(5) = F(3) + F(4) = 2 + 3 = 5</li>
 </ul>
-<p>대괄호, 중괄호, 그리고 소괄호로 이루어진 문자열 s가 매개변수로 주어집니다. 이 s를 왼쪽으로 x (0 ≤ x &lt; (s의 길이)) 칸만큼 회전시켰을 때 s가 올바른 괄호 문자열이 되게 하는 x의 개수를 return 하도록 solution 함수를 완성해주세요.
+<p>와 같이 이어집니다.
+2 이상의 n이 입력되었을 때, n번째 피보나치 수를 1234567으로 나눈 나머지를 리턴하는 함수, solution을 완성해 주세요.
 <br />
 <br /></p>
 
 <h2>제한 사항</h2>
 <ul class="data-contents">
 <br />
-<li>s의 길이는 1 이상 1,000 이하입니다.</li>
+<li>n은 2 이상 100,000 이하인 자연수입니다.</li>
 </ul>
 <p><br /></p>
 
@@ -234,54 +232,22 @@ into the {body} of the default.hbs template -->
 </ul>
 <br/> -->
 
-<h2>풀이과정</h2>
+<h2>문제 풀이</h2>
 <p><br />
-<a href="https://programmers.co.kr/learn/courses/30/lessons/12909">올바른 괄호</a> 문제의 확장이라고 보면 되기에 기본적인 접근 방법도 동일하다. 스택과 큐를 이용하였다. 스택에 괄호들을 쌓고 올바른 순서대로 들어왔을 경우 빈스택이 되도록 하는 것이다. 추가적으로 문자열을 문자열의 길이만큼 회전시키는 코드만 추가하였다. 리스트 슬라이싱을 이용해서 i번째까지의 리스트를 남은 리스트의 뒤쪽에 이어붙이는 방식으로 새로운 리스트를 생성하였다.</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)):</span>
-        <span class="n">sl</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-        <span class="n">sl</span> <span class="o">=</span> <span class="n">sl</span><span class="p">[</span><span class="n">i</span><span class="p">:]</span> <span class="o">+</span> <span class="n">sl</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">st</span> <span class="o">=</span> <span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">sl</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">checkRight</span><span class="p">(</span><span class="n">st</span><span class="p">):</span>
-            <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="n">cnt</span>
-</code></pre></div></div>
-
-<p><br /></p>
+DP를 이용해서 접근했다. 단순하게 반복문을 이용해서 구할 경우, 불필요하게 반복되는 과정이 많아진다. 예로들어, F(5)를 구한다고 하면, F(5) = F(4) + F(3)를 이용해서 값을 연산한다. F(4) = F(3) + F(2)이며, F(2) = F(1) + F(0)이다. 한편 F(4)를 연산 후 F(3)을 연산해야 F(5)를 구할 수 있는데, 앞서 진행한 과정을 보면 F(4)를 연산하는 과정에서 F(3)을 연산했음에도 불구하고 F(3)을 구하는 과정을 반복한다. 이와 같이 이미 처리한 과정을 반복하는 것을 방지하기 위해서 이미 연산한 것을 저장하는 DP를 이용하였다.
+<br />
+<br /></p>
 
 <h2>최종 코드</h2>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span> <span class="k">as</span> <span class="n">dq</span>
-
-<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span> <span class="k">as</span> <span class="n">dq</span>
-
-<span class="k">def</span> <span class="nf">checkRight</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-    <span class="n">queue</span> <span class="o">=</span> <span class="n">dq</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-    <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
-        <span class="n">pop</span> <span class="o">=</span> <span class="n">queue</span><span class="p">.</span><span class="n">popleft</span><span class="p">()</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">stack</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">pop</span> <span class="o">==</span> <span class="s">'}'</span> <span class="ow">and</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s">'{'</span><span class="p">:</span>
-                <span class="n">stack</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
-            <span class="k">elif</span> <span class="n">pop</span> <span class="o">==</span> <span class="s">']'</span> <span class="ow">and</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s">'['</span><span class="p">:</span>
-                <span class="n">stack</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
-            <span class="k">elif</span> <span class="n">pop</span> <span class="o">==</span> <span class="s">')'</span> <span class="ow">and</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s">'('</span><span class="p">:</span>
-                <span class="n">stack</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">stack</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
-    <span class="k">return</span> <span class="bp">True</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="bp">False</span>
-
-<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-    <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)):</span>
-        <span class="n">sl</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-        <span class="n">sl</span> <span class="o">=</span> <span class="n">sl</span><span class="p">[</span><span class="n">i</span><span class="p">:]</span> <span class="o">+</span> <span class="n">sl</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">st</span> <span class="o">=</span> <span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">sl</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">checkRight</span><span class="p">(</span><span class="n">st</span><span class="p">):</span>
-            <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="n">cnt</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">dic</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span> <span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">dic</span><span class="p">:</span>
+            <span class="n">dic</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">dic</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dic</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+    
+    <span class="n">answer</span> <span class="o">=</span> <span class="n">dic</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">%</span><span class="mi">1234567</span>
+    <span class="k">return</span> <span class="n">answer</span>
 </code></pre></div></div>
 
                 </div>
@@ -349,9 +315,9 @@ into the {body} of the default.hbs template -->
                     <div id="disqus_thread"></div>
                     <script>
                         var disqus_config = function () {
-                            var this_page_url = 'http://localhost:4000/programmers-rotate_parenthesis-copy';
-                            var this_page_identifier = '/programmers-rotate_parenthesis copy';
-                            var this_page_title = '프로그래머스 - 괄호 회전하기(Queue, Stack)';
+                            var this_page_url = 'http://localhost:4000/programmers-Fibonacci_numbers';
+                            var this_page_identifier = '/programmers-Fibonacci_numbers';
+                            var this_page_title = '프로그래머스 - 피보나치 수(DP)';
                         };
                         (function() {
                             var d = document, s = d.createElement('script');
@@ -384,12 +350,12 @@ into the {body} of the default.hbs template -->
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/programmers-Fibonacci_numbers">
+            <a class="post-card-image-link" href="/programmers-visist_length">
                 <div class="post-card-image" style="background-image: url(/assets/built/images/programmers_logo.jpg)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/programmers-Fibonacci_numbers">
+            <a class="post-card-content-link" href="/programmers-visist_length">
                 <header class="post-card-header">
                     
                         
@@ -403,12 +369,12 @@ into the {body} of the default.hbs template -->
                         
                     
 
-                    <h2 class="post-card-title">프로그래머스 - 피보나치 수(DP)</h2>
+                    <h2 class="post-card-title">프로그래머스 - 방문 길이(DP)</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
                         <p>  
- Dynamic Programming - 피보나치 수
+ Dynamic Programming - 방문 길이
 
 
 </p>
@@ -429,7 +395,7 @@ into the {body} of the default.hbs template -->
                 <span class="reading-time">
                     
                     
-                      1 min read
+                      2 min read
                     
                 </span>
             </footer>
@@ -444,12 +410,12 @@ into the {body} of the default.hbs template -->
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/programmers-correct_parenthesis">
+            <a class="post-card-image-link" href="/programmers-rotate_parenthesis-copy">
                 <div class="post-card-image" style="background-image: url(/assets/built/images/programmers_logo.jpg)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/programmers-correct_parenthesis">
+            <a class="post-card-content-link" href="/programmers-rotate_parenthesis-copy">
                 <header class="post-card-header">
                     
                         
@@ -467,12 +433,12 @@ into the {body} of the default.hbs template -->
                         
                     
 
-                    <h2 class="post-card-title">프로그래머스 - 올바른 괄호(Queue, Stack)</h2>
+                    <h2 class="post-card-title">프로그래머스 - 괄호 회전하기(Queue, Stack)</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
                         <p>  
- Queue / Stack - 올바른 괄호
+ Queue / Stack - 괄호 회전하기
 
 
 </p>
@@ -515,18 +481,18 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">프로그래머스 - 괄호 회전하기(Queue, Stack)</div>
+    <div class="floating-header-title">프로그래머스 - 피보나치 수(DP)</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4+-+%EA%B4%84%ED%98%B8+%ED%9A%8C%EC%A0%84%ED%95%98%EA%B8%B0%28Queue%2C+Stack%29&amp;url=https://sanghyoson.github.io/programmers-rotate_parenthesis-copy"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4+-+%ED%94%BC%EB%B3%B4%EB%82%98%EC%B9%98+%EC%88%98%28DP%29&amp;url=https://sanghyoson.github.io/programmers-Fibonacci_numbers"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://sanghyoson.github.io/programmers-rotate_parenthesis-copy"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://sanghyoson.github.io/programmers-Fibonacci_numbers"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 

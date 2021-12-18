@@ -183,6 +183,33 @@ into the {body} of the default.hbs template -->
 <script>
     window.store = {
     
+    "programmers-truck-on-the-bridge": {
+        "title": "프로그래머스 - 다리를 지나는 트럭(Queue, Stack)",
+            "author": "sanghyoson",
+            "category": "",
+            "content": "   Queue / Stack - 다리를 지나는 트럭문제 설명트럭 여러 대가 강을 가로지르는 일차선 다리를 정해진 순으로 건너려 합니다. 모든 트럭이 다리를 건너려면 최소 몇 초가 걸리는지 알아내야 합니다. 다리에는 트럭이 최대 bridge_length대 올라갈 수 있으며, 다리는 weight 이하까지의 무게를 견딜 수 있습니다. 단, 다리에 완전히 오르지 않은 트럭의 무게는 무시합니다.예를 들어, 트럭 2대가 올라갈 수 있고 무게를 10kg까지 견디는 다리가 있습니다. 무게가 [7, 4, 5, 6]kg인 트럭이 순서대로 최단 시간 안에 다리를 건너려면 다음과 같이 건너야 합니다.            경과 시간      다리를 지난 트럭      다리를 건너는 트럭      대기 트럭                  0      []      []      [7,4,5,6]              1~2      []      [7]      [4,5,6]              3      [7]      [4]      [5,6]              4      [7]      [4,5]      [6]              5      [7,4]      [5]      [6]              6~7      [7,4,5]      [6]      []              8      [7,4,5,6]      []      []      따라서, 모든 트럭이 다리를 지나려면 최소 8초가 걸립니다.solution 함수의 매개변수로 다리에 올라갈 수 있는 트럭 수 bridge_length, 다리가 견딜 수 있는 무게 weight, 트럭 별 무게 truck_weights가 주어집니다. 이때 모든 트럭이 다리를 건너려면 최소 몇 초가 걸리는지 return 하도록 solution 함수를 완성하세요.제한 사항bridge_length는 1 이상 10,000 이하입니다.weight는 1 이상 10,000 이하입니다.truck_weights의 길이는 1 이상 10,000 이하입니다.w모든 트럭의 무게는 1 이상 weight 이하입니다.문제 풀이Queue를 이용하여서 해결하였다. 다리 길이 크기를 갖는 큐를 생성하고, truck_weights에서 하나씩 큐로 이동하였다. 큐의 총 합이 최대 하중이 넘지 않을때만 truck_weights에서 옮기도록하였고, 각 시간 스텝마다 큐는 하나씩 왼쪽으로 이동시킨다. 최종적으로 큐 위의 모든 하중이 없고, truck_weights 리스트에 남은 원소가 존재하지 않았을 때의 시간을 구한다.  한편, sum() 함수를 이용하면, 많은 시간을 잡아 먹는다. sum()의 시간복잡도 O(N)최종 코드from collections import deque as dqdef solution(bridge_length, weight, truck_weights):    time = 0    q = dq([0 for i in range(bridge_length)])    suma = 0        while q:        time += 1        suma -= q.popleft()        if truck_weights:            if suma + truck_weights[0] &lt;= weight:                suma += truck_weights[0]        # 개어이 없네 .... sum 개 오래걸림...                q.append(truck_weights.pop(0))            else:                q.append(0)        return time",
+        "url": "/programmers-truck_on_the_bridge"
+    }
+    ,
+    
+    "programmers-visist-length": {
+        "title": "프로그래머스 - 방문 길이(DP)",
+            "author": "sanghyoson",
+            "category": "",
+            "content": "   Dynamic Programming - 방문 길이문제 설명게임 캐릭터를 4가지 명령어를 통해 움직이려 합니다. 명령어는 다음과 같습니다.U: 위쪽으로 한 칸 가기D: 아래쪽으로 한 칸 가기R: 오른쪽으로 한 칸 가기L: 왼쪽으로 한 칸 가기캐릭터는 좌표평면의 (0, 0) 위치에서 시작합니다. 좌표평면의 경계는 왼쪽 위(-5, 5), 왼쪽 아래(-5, -5), 오른쪽 위(5, 5), 오른쪽 아래(5, -5)로 이루어져 있습니다. 예를 들어, “ULURRDLLU”로 명령했다면 이때, 우리는 게임 캐릭터가 지나간 길 중 캐릭터가 처음 걸어본 길의 길이를 구하려고 합니다. 예를 들어 위의 예시에서 게임 캐릭터가 움직인 길이는 9이지만, 캐릭터가 처음 걸어본 길의 길이는 7이 됩니다. (8, 9번 명령어에서 움직인 길은 2, 3번 명령어에서 이미 거쳐 간 길입니다) 단, 좌표평면의 경계를 넘어가는 명령어는 무시합니다. 이때 캐릭터가 처음 걸어본 길의 길이는 7이 됩니다.명령어가 매개변수 dirs로 주어질 때, 게임 캐릭터가 처음 걸어본 길의 길이를 구하여 return 하는 solution 함수를 완성해 주세요.제한 사항dirs는 string형으로 주어지며, 'U', 'D', 'R', 'L' 이외에 문자는 주어지지 않습니다.dirs의 길이는 500 이하의 자연수입니다.문제 풀이DP를 이용해서 접근했다. 방문했던 길을 기억하고 있고, 최종적으로 DP로 쌓은 경로 딕션너리 길이를 출력하면 된다. 문제에 언급이 없기 때문에 초기 접근은 방향성을 고려하지 않았다. 즉, 동일한 길을 가더라도, 방향이 다르면 다른 길이라고 생각하고 접근했다. 이러한 방법으로 접근하기 위해서, 도착하는 포인트를 Key로 도착할 떄의 Action들을 Values로 갖는 딕셔너리 형태로 기억하도록 한다. 예로, 초기 위치 (0,0)에서 ‘U’라는 인풋을 받아 (0,1)이라는 점으로 이동하면, 딕셔너리에 (0,1) :  {‘U’ : 1, ‘D’ : 0, ‘R’ : 0, ‘L’ : 0} 형태로 데이터를 저장한다. 최종적으로 Diction 내의 1의 개수를 구하면 된다.초기 코드def solution(dirs):    dic = {(0,0) : {'U' : 0, 'D' : 0, 'R' : 0, 'L' : 0}}        cp = [0, 0]        for i, di in enumerate(dirs):        if di == 'U' and cp[1] &lt; 5:            cp[1] += 1        elif di == 'D' and cp[1] &gt; -5:            cp[1] -= 1        elif di == 'R' and cp[0] &lt; 5:            cp[0] += 1        elif di == 'L' and cp[0] &gt; -5:            cp[0] -= 1                if tuple(cp) not in dic:            dic[tuple(cp)] = {'U' : 0, 'D' : 0, 'R' : 0, 'L' : 0}        if dic[tuple(cp)][di] == 0:            dic[tuple(cp)][di] += 1    result = 0    for p, vals in dic.items():        for _, val in vals.items():            result += val    return result문제 풀이 수정위와 같은 코드로 진행시 오류가 발생하였다. 방향성을 독립적인 것이라고 고려하였기 때문이라, 방향과 관계없이 거쳐간 길을 DP를 이용하여 기록하도록 하였다. 조금은 지저분하지만, 초기 위치에서 다음 위치로 이동하였을 때(사실 다른 풀이들도 뭐 그렇게 깔끔해보이진 않았음…), 두 점 사이의 중점을 DP에 저장하는 방식으로 접근하였다. 효율성 체크는 확인하지 않고, 통과하였기에 추가적인 풀이는 생략.최종 코드def solution(dirs):    dic = {}        cp = [0, 0]        for i, di in enumerate(dirs):        if di == 'U' and cp[1] &lt; 5:            cp[1] += 1            m = cp[0]            n = cp[1] - 0.5        elif di == 'D' and cp[1] &gt; -5:            cp[1] -= 1            m = cp[0]            n = cp[1] + 0.5        elif di == 'R' and cp[0] &lt; 5:            cp[0] += 1            m = cp[0] - 0.5            n = cp[1]        elif di == 'L' and cp[0] &gt; -5:            cp[0] -= 1            m = cp[0] + 0.5            n = cp[1]                if (m,n) not in dic:            dic[(m,n)] = 1            return len(dic)",
+        "url": "/programmers-visist_length"
+    }
+    ,
+    
+    "programmers-fibonacci-numbers": {
+        "title": "프로그래머스 - 피보나치 수(DP)",
+            "author": "sanghyoson",
+            "category": "",
+            "content": "   Dynamic Programming - 피보나치 수문제 설명피보나치 수는 F(0) = 0, F(1) = 1일 때, 1 이상의 n에 대하여 F(n) = F(n-1) + F(n-2) 가 적용되는 수 입니다.F(2) = F(0) + F(1) = 0 + 1 = 1F(3) = F(1) + F(2) = 1 + 1 = 2F(4) = F(2) + F(3) = 1 + 2 = 3F(5) = F(3) + F(4) = 2 + 3 = 5와 같이 이어집니다.2 이상의 n이 입력되었을 때, n번째 피보나치 수를 1234567으로 나눈 나머지를 리턴하는 함수, solution을 완성해 주세요.제한 사항n은 2 이상 100,000 이하인 자연수입니다.문제 풀이DP를 이용해서 접근했다. 단순하게 반복문을 이용해서 구할 경우, 불필요하게 반복되는 과정이 많아진다. 예로들어, F(5)를 구한다고 하면, F(5) = F(4) + F(3)를 이용해서 값을 연산한다. F(4) = F(3) + F(2)이며, F(2) = F(1) + F(0)이다. 한편 F(4)를 연산 후 F(3)을 연산해야 F(5)를 구할 수 있는데, 앞서 진행한 과정을 보면 F(4)를 연산하는 과정에서 F(3)을 연산했음에도 불구하고 F(3)을 구하는 과정을 반복한다. 이와 같이 이미 처리한 과정을 반복하는 것을 방지하기 위해서 이미 연산한 것을 저장하는 DP를 이용하였다.최종 코드def solution(n):    dic = {0 : 0, 1 : 1}        for i in range(n+1):        if not i in dic:            dic[i] = dic[i-1] + dic[i-2]        answer = dic[n]%1234567    return answer",
+        "url": "/programmers-Fibonacci_numbers"
+    }
+    ,
+    
     "programmers-rotate-parenthesis-copy": {
         "title": "프로그래머스 - 괄호 회전하기(Queue, Stack)",
             "author": "sanghyoson",

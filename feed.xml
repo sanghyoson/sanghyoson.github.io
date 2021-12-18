@@ -1,4 +1,268 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-17T21:03:38+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Backend Follow-up</title><subtitle>백엔드 개발자가 되기 위한 발자취를 남기는 곳</subtitle><entry><title type="html">프로그래머스 - 괄호 회전하기(Queue, Stack)</title><link href="http://localhost:4000/programmers-rotate_parenthesis-copy" rel="alternate" type="text/html" title="프로그래머스 - 괄호 회전하기(Queue, Stack)" /><published>2021-11-06T23:40:00+09:00</published><updated>2021-11-06T23:40:00+09:00</updated><id>http://localhost:4000/programmers-rotate_parenthesis%20copy</id><content type="html" xml:base="http://localhost:4000/programmers-rotate_parenthesis-copy">&lt;p&gt;&lt;i class=&quot;fa fa-search&quot;&gt; &lt;/i&gt; 
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-18T23:27:25+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Backend Follow-up</title><subtitle>백엔드 개발자가 되기 위한 발자취를 남기는 곳</subtitle><entry><title type="html">프로그래머스 - 다리를 지나는 트럭(Queue, Stack)</title><link href="http://localhost:4000/programmers-truck_on_the_bridge" rel="alternate" type="text/html" title="프로그래머스 - 다리를 지나는 트럭(Queue, Stack)" /><published>2021-11-08T01:40:00+09:00</published><updated>2021-11-08T01:40:00+09:00</updated><id>http://localhost:4000/programmers-truck_on_the_bridge</id><content type="html" xml:base="http://localhost:4000/programmers-truck_on_the_bridge">&lt;p&gt;&lt;i class=&quot;fa fa-search&quot;&gt; &lt;/i&gt; 
+&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/42583&quot;&gt; Queue / Stack - 다리를 지나는 트럭&lt;/a&gt;
+&lt;img src=&quot;../assets/built/images/programmers_logo.jpg&quot; alt=&quot;프로그래머스 사진&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;&lt;/p&gt;
+
+&lt;h2&gt;문제 설명&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt;
+트럭 여러 대가 강을 가로지르는 일차선 다리를 정해진 순으로 건너려 합니다. 모든 트럭이 다리를 건너려면 최소 몇 초가 걸리는지 알아내야 합니다. 다리에는 트럭이 최대 bridge_length대 올라갈 수 있으며, 다리는 weight 이하까지의 무게를 견딜 수 있습니다. 단, 다리에 완전히 오르지 않은 트럭의 무게는 무시합니다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어, 트럭 2대가 올라갈 수 있고 무게를 10kg까지 견디는 다리가 있습니다. 무게가 [7, 4, 5, 6]kg인 트럭이 순서대로 최단 시간 안에 다리를 건너려면 다음과 같이 건너야 합니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;경과 시간&lt;/th&gt;
+      &lt;th&gt;다리를 지난 트럭&lt;/th&gt;
+      &lt;th&gt;다리를 건너는 트럭&lt;/th&gt;
+      &lt;th&gt;대기 트럭&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;[]&lt;/td&gt;
+      &lt;td&gt;[]&lt;/td&gt;
+      &lt;td&gt;[7,4,5,6]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1~2&lt;/td&gt;
+      &lt;td&gt;[]&lt;/td&gt;
+      &lt;td&gt;[7]&lt;/td&gt;
+      &lt;td&gt;[4,5,6]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;[7]&lt;/td&gt;
+      &lt;td&gt;[4]&lt;/td&gt;
+      &lt;td&gt;[5,6]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;[7]&lt;/td&gt;
+      &lt;td&gt;[4,5]&lt;/td&gt;
+      &lt;td&gt;[6]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;[7,4]&lt;/td&gt;
+      &lt;td&gt;[5]&lt;/td&gt;
+      &lt;td&gt;[6]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;6~7&lt;/td&gt;
+      &lt;td&gt;[7,4,5]&lt;/td&gt;
+      &lt;td&gt;[6]&lt;/td&gt;
+      &lt;td&gt;[]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;8&lt;/td&gt;
+      &lt;td&gt;[7,4,5,6]&lt;/td&gt;
+      &lt;td&gt;[]&lt;/td&gt;
+      &lt;td&gt;[]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;따라서, 모든 트럭이 다리를 지나려면 최소 8초가 걸립니다.&lt;/p&gt;
+
+&lt;p&gt;solution 함수의 매개변수로 다리에 올라갈 수 있는 트럭 수 bridge_length, 다리가 견딜 수 있는 무게 weight, 트럭 별 무게 truck_weights가 주어집니다. 이때 모든 트럭이 다리를 건너려면 최소 몇 초가 걸리는지 return 하도록 solution 함수를 완성하세요.
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2&gt;제한 사항&lt;/h2&gt;
+&lt;ul class=&quot;data-contents&quot;&gt;
+&lt;br /&gt;
+&lt;li&gt;bridge_length는 1 이상 10,000 이하입니다.&lt;/li&gt;
+&lt;li&gt;weight는 1 이상 10,000 이하입니다.&lt;/li&gt;
+&lt;li&gt;truck_weights의 길이는 1 이상 10,000 이하입니다.&lt;/li&gt;
+&lt;li&gt;w모든 트럭의 무게는 1 이상 weight 이하입니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;!-- &lt;h2&gt;출력 형식&lt;/h2&gt;
+&lt;ul class = 'data-contents'&gt;
+&lt;br/&gt;
+&lt;li&gt;solution 함수에서는 로그 데이터 lines 배열에 대해 초당 최대 처리량을 리턴한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br/&gt; --&gt;
+
+&lt;h2&gt;문제 풀이&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt;
+Queue를 이용하여서 해결하였다. 다리 길이 크기를 갖는 큐를 생성하고, truck_weights에서 하나씩 큐로 이동하였다. 큐의 총 합이 최대 하중이 넘지 않을때만 truck_weights에서 옮기도록하였고, 각 시간 스텝마다 큐는 하나씩 왼쪽으로 이동시킨다. 최종적으로 큐 위의 모든 하중이 없고, truck_weights 리스트에 남은 원소가 존재하지 않았을 때의 시간을 구한다.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;한편, sum() 함수를 이용하면, 많은 시간을 잡아 먹는다. sum()의 시간복잡도 O(N)
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2&gt;최종 코드&lt;/h2&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;collections&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deque&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dq&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bridge_length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;truck_weights&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bridge_length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)])&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;suma&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;suma&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;popleft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;truck_weights&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;suma&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;truck_weights&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;suma&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;truck_weights&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;# 개어이 없네 .... sum 개 오래걸림...
+&lt;/span&gt;                &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;truck_weights&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>sanghyoson</name></author><category term="programmers" /><category term="queue" /><category term="stack" /><summary type="html">  Queue / Stack - 다리를 지나는 트럭</summary></entry><entry><title type="html">프로그래머스 - 방문 길이(DP)</title><link href="http://localhost:4000/programmers-visist_length" rel="alternate" type="text/html" title="프로그래머스 - 방문 길이(DP)" /><published>2021-11-08T00:40:00+09:00</published><updated>2021-11-08T00:40:00+09:00</updated><id>http://localhost:4000/programmers-visist_length</id><content type="html" xml:base="http://localhost:4000/programmers-visist_length">&lt;p&gt;&lt;i class=&quot;fa fa-search&quot;&gt; &lt;/i&gt; 
+&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/49994&quot;&gt; Dynamic Programming - 방문 길이&lt;/a&gt;
+&lt;img src=&quot;../assets/built/images/programmers_logo.jpg&quot; alt=&quot;프로그래머스 사진&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;&lt;/p&gt;
+
+&lt;h2&gt;문제 설명&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt;
+게임 캐릭터를 4가지 명령어를 통해 움직이려 합니다. 명령어는 다음과 같습니다.&lt;/p&gt;
+&lt;ul class=&quot;data-contents&quot;&gt;
+&lt;li&gt;U: 위쪽으로 한 칸 가기&lt;/li&gt;
+&lt;li&gt;D: 아래쪽으로 한 칸 가기&lt;/li&gt;
+&lt;li&gt;R: 오른쪽으로 한 칸 가기&lt;/li&gt;
+&lt;li&gt;L: 왼쪽으로 한 칸 가기&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;
+캐릭터는 좌표평면의 (0, 0) 위치에서 시작합니다. 좌표평면의 경계는 왼쪽 위(-5, 5), 왼쪽 아래(-5, -5), 오른쪽 위(5, 5), 오른쪽 아래(5, -5)로 이루어져 있습니다. 예를 들어, “ULURRDLLU”로 명령했다면 이때, 우리는 게임 캐릭터가 지나간 길 중 캐릭터가 처음 걸어본 길의 길이를 구하려고 합니다. 예를 들어 위의 예시에서 게임 캐릭터가 움직인 길이는 9이지만, 캐릭터가 처음 걸어본 길의 길이는 7이 됩니다. (8, 9번 명령어에서 움직인 길은 2, 3번 명령어에서 이미 거쳐 간 길입니다) 단, 좌표평면의 경계를 넘어가는 명령어는 무시합니다. 이때 캐릭터가 처음 걸어본 길의 길이는 7이 됩니다.
+명령어가 매개변수 dirs로 주어질 때, 게임 캐릭터가 처음 걸어본 길의 길이를 구하여 return 하는 solution 함수를 완성해 주세요.
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2&gt;제한 사항&lt;/h2&gt;
+&lt;ul class=&quot;data-contents&quot;&gt;
+&lt;br /&gt;
+&lt;li&gt;dirs는 string형으로 주어지며, 'U', 'D', 'R', 'L' 이외에 문자는 주어지지 않습니다.&lt;/li&gt;
+&lt;li&gt;dirs의 길이는 500 이하의 자연수입니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;!-- &lt;h2&gt;출력 형식&lt;/h2&gt;
+&lt;ul class = 'data-contents'&gt;
+&lt;br/&gt;
+&lt;li&gt;solution 함수에서는 로그 데이터 lines 배열에 대해 초당 최대 처리량을 리턴한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br/&gt; --&gt;
+
+&lt;h2&gt;문제 풀이&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt;
+DP를 이용해서 접근했다. 방문했던 길을 기억하고 있고, 최종적으로 DP로 쌓은 경로 딕션너리 길이를 출력하면 된다. 문제에 언급이 없기 때문에 초기 접근은 방향성을 고려하지 않았다. &lt;strong&gt;즉, 동일한 길을 가더라도, 방향이 다르면 다른 길이라고 생각하고 접근했다.&lt;/strong&gt; 이러한 방법으로 접근하기 위해서, 도착하는 포인트를 Key로 도착할 떄의 Action들을 Values로 갖는 딕셔너리 형태로 기억하도록 한다. 예로, 초기 위치 (0,0)에서 ‘U’라는 인풋을 받아 (0,1)이라는 점으로 이동하면, 딕셔너리에 (0,1) :  {&lt;strong&gt;‘U’ : 1&lt;/strong&gt;, ‘D’ : 0, ‘R’ : 0, ‘L’ : 0} 형태로 데이터를 저장한다. 최종적으로 Diction 내의 1의 개수를 구하면 된다.
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2&gt;초기 코드&lt;/h2&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dirs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;dic&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'U'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'D'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'R'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'L'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;    
+    &lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;di&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dirs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;di&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'U'&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;di&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'D'&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;di&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'R'&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;di&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'L'&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;tuple&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;dic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;tuple&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'U'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'D'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'R'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'L'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;tuple&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;di&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;dic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;tuple&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;di&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vals&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h2&gt;문제 풀이 수정&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt;
+위와 같은 코드로 진행시 오류가 발생하였다. 방향성을 독립적인 것이라고 고려하였기 때문이라, 방향과 관계없이 거쳐간 길을 DP를 이용하여 기록하도록 하였다. 조금은 지저분하지만, 초기 위치에서 다음 위치로 이동하였을 때(사실 다른 풀이들도 뭐 그렇게 깔끔해보이진 않았음…), 두 점 사이의 중점을 DP에 저장하는 방식으로 접근하였다. 효율성 체크는 확인하지 않고, 통과하였기에 추가적인 풀이는 생략.
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2&gt;최종 코드&lt;/h2&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dirs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;dic&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;    
+    &lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;di&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dirs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;di&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'U'&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;di&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'D'&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;di&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'R'&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;di&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'L'&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;dic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>sanghyoson</name></author><category term="programmers" /><category term="dp" /><summary type="html">  Dynamic Programming - 방문 길이</summary></entry><entry><title type="html">프로그래머스 - 피보나치 수(DP)</title><link href="http://localhost:4000/programmers-Fibonacci_numbers" rel="alternate" type="text/html" title="프로그래머스 - 피보나치 수(DP)" /><published>2021-11-07T06:40:00+09:00</published><updated>2021-11-07T06:40:00+09:00</updated><id>http://localhost:4000/programmers-Fibonacci_numbers</id><content type="html" xml:base="http://localhost:4000/programmers-Fibonacci_numbers">&lt;p&gt;&lt;i class=&quot;fa fa-search&quot;&gt; &lt;/i&gt; 
+&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/42895&quot;&gt; Dynamic Programming - 피보나치 수&lt;/a&gt;
+&lt;img src=&quot;../assets/built/images/programmers_logo.jpg&quot; alt=&quot;프로그래머스 사진&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;&lt;/p&gt;
+
+&lt;h2&gt;문제 설명&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt;
+피보나치 수는 F(0) = 0, F(1) = 1일 때, 1 이상의 n에 대하여 F(n) = F(n-1) + F(n-2) 가 적용되는 수 입니다.&lt;/p&gt;
+&lt;ul class=&quot;data-contents&quot;&gt;
+&lt;li&gt;F(2) = F(0) + F(1) = 0 + 1 = 1&lt;/li&gt;
+&lt;li&gt;F(3) = F(1) + F(2) = 1 + 1 = 2&lt;/li&gt;
+&lt;li&gt;F(4) = F(2) + F(3) = 1 + 2 = 3&lt;/li&gt;
+&lt;li&gt;F(5) = F(3) + F(4) = 2 + 3 = 5&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;와 같이 이어집니다.
+2 이상의 n이 입력되었을 때, n번째 피보나치 수를 1234567으로 나눈 나머지를 리턴하는 함수, solution을 완성해 주세요.
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2&gt;제한 사항&lt;/h2&gt;
+&lt;ul class=&quot;data-contents&quot;&gt;
+&lt;br /&gt;
+&lt;li&gt;n은 2 이상 100,000 이하인 자연수입니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;!-- &lt;h2&gt;출력 형식&lt;/h2&gt;
+&lt;ul class = 'data-contents'&gt;
+&lt;br/&gt;
+&lt;li&gt;solution 함수에서는 로그 데이터 lines 배열에 대해 초당 최대 처리량을 리턴한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br/&gt; --&gt;
+
+&lt;h2&gt;문제 풀이&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt;
+DP를 이용해서 접근했다. 단순하게 반복문을 이용해서 구할 경우, 불필요하게 반복되는 과정이 많아진다. 예로들어, F(5)를 구한다고 하면, F(5) = F(4) + F(3)를 이용해서 값을 연산한다. F(4) = F(3) + F(2)이며, F(2) = F(1) + F(0)이다. 한편 F(4)를 연산 후 F(3)을 연산해야 F(5)를 구할 수 있는데, 앞서 진행한 과정을 보면 F(4)를 연산하는 과정에서 F(3)을 연산했음에도 불구하고 F(3)을 구하는 과정을 반복한다. 이와 같이 이미 처리한 과정을 반복하는 것을 방지하기 위해서 이미 연산한 것을 저장하는 DP를 이용하였다.
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2&gt;최종 코드&lt;/h2&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;dic&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;dic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    
+    &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1234567&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>sanghyoson</name></author><category term="programmers" /><category term="dp" /><summary type="html">  Dynamic Programming - 피보나치 수</summary></entry><entry><title type="html">프로그래머스 - 괄호 회전하기(Queue, Stack)</title><link href="http://localhost:4000/programmers-rotate_parenthesis-copy" rel="alternate" type="text/html" title="프로그래머스 - 괄호 회전하기(Queue, Stack)" /><published>2021-11-06T23:40:00+09:00</published><updated>2021-11-06T23:40:00+09:00</updated><id>http://localhost:4000/programmers-rotate_parenthesis%20copy</id><content type="html" xml:base="http://localhost:4000/programmers-rotate_parenthesis-copy">&lt;p&gt;&lt;i class=&quot;fa fa-search&quot;&gt; &lt;/i&gt; 
 &lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/76502&quot;&gt; Queue / Stack - 괄호 회전하기&lt;/a&gt;
 &lt;img src=&quot;../assets/built/images/programmers_logo.jpg&quot; alt=&quot;프로그래머스 사진&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;&lt;/p&gt;
 
@@ -281,69 +545,7 @@ N을 n개를 이용하여 표현할 수 있는 수는 다음과 같이 구할 �
         &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
             &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_num&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>sanghyoson</name></author><category term="programmers" /><category term="dp" /><summary type="html">  Dynamic Programming - N으로 표현</summary></entry><entry><title type="html">알고리즘 - 시간복잡도</title><link href="http://localhost:4000/algorithm-time-complexity" rel="alternate" type="text/html" title="알고리즘 - 시간복잡도" /><published>2021-11-04T21:40:00+09:00</published><updated>2021-11-04T21:40:00+09:00</updated><id>http://localhost:4000/algorithm-time-complexity</id><content type="html" xml:base="http://localhost:4000/algorithm-time-complexity">&lt;p&gt;&lt;i class=&quot;fa fa-search&quot;&gt; &lt;/i&gt; 
-&lt;a href=&quot;https://ko.wikipedia.org/wiki/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98&quot;&gt; 알고리즘이란? &lt;/a&gt;
-&lt;img src=&quot;../assets/built/images/algorithm.jpg&quot; alt=&quot;알고리즘 사진&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;&lt;/p&gt;
-
-&lt;h2&gt;알고리즘이란?&lt;/h2&gt;
-&lt;p&gt;&lt;br /&gt;
-시간복잡도의 필요성 및 개념을 알기 전, 알고리즘이 무엇인지에 대해서부터 이해가 필요했다. 사전적 의미의 알고리즘은 다음과 같다.&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;알고리즘이란 어떠한 문제를 풀기위해서 정해진 일련의 절차 혹은 방법을 공식화한 형태로 표현한 것&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;조금 더 간단히 얘기하면, 어떠한 목적이 있고 이를 달성하기 위해서 거쳐야하는 과정이 존재하는데 이를 기술하는 것을 의미한다. 알고리즘 특성은 다음 조건들을 만족해야 한다.&lt;/p&gt;
-
-&lt;ul class=&quot;data-contents&quot;&gt;
-&lt;li&gt;입력 : 자료가 외부에서 하나 이상 제공되어야 한다.&lt;/li&gt;
-&lt;li&gt;출력 : 알고리즘의 결과로 하나 이상의 값이 도출되어야 한다.&lt;/li&gt;
-&lt;li&gt;유한성 : 알고리즘이 일정 작업이 지나면 종료되어야 한다. &lt;/li&gt;
-&lt;li&gt;명확성 : 명확한 작업과, 각 단계마다 명확한 다음 단계를 가져야한다. &lt;/li&gt;
-&lt;li&gt;효율성 : 실용적이여야 하며, 효율성이 높은 알고리즘일수록 가지가 높다. &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;br /&gt;
-시간의 복잡도의 개념이 필요한 이유는 위에서 나열한 알고리즘 특성들 중 효율성과 관련이 있다. 효율성에서 볼 수 있듯, 같은 문제를 해결하는 알고리즘은은 여러 개가 존재하지만, 둘 중 효율적인 알고리즘이 더욱 우수한 알고리즘이라 할 수 있다. 효율적인 알고리즘(컴퓨터의 성능, 언어 등의 다른 변수가 동일하다면)일수록 컴퓨터가 빠르게 실행할 수 있다. 한편, 여러 알고리즘 중 효율적인 알고리즘이 무엇인지를 판단하기 위한 기준이 필요한데, 이때 필요한 개념이 시간복잡도와 공간복잡도이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h2&gt;시간복잡도&lt;/h2&gt;
-&lt;p&gt;&lt;br /&gt;
-일반적으로 알고리즘의 복잡도는 시간복잡도와 공간복잡도로 평가를 하지만, 시간복잡도를 더 중요하게 평가한다. 요즘 많은 하드웨어들의 발달로 대용량의 메모리를 사용하는 것이 허용되기 때문에 시간복잡도를 위주로 판단한다.&lt;/p&gt;
-
-&lt;h4&gt;복잡도 표기법&lt;/h4&gt;
-&lt;p&gt;&lt;br /&gt;
-시간 복잡도를 표현하는 알고리즘 표기법은 다음 세가지가 존재한다. 
-&lt;br /&gt;&lt;/p&gt;
-&lt;ul class=&quot;data-contents&quot;&gt;
-    &lt;li&gt;최상(Best)의 경우 : 빅오메가(Big-Omega) 표기법&lt;/li&gt;
-    &lt;li&gt;최악(Worst)의 경우 : 빅오(Big-O) 표기법&lt;/li&gt;
-    &lt;li&gt;평균(Average)의 경우 : 빅세타(Big-theta) 표기법&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;br /&gt;
-이 중 가장 일반적으로 판단하는 표기법은 최악의 경우로 판단하는 빅오 알고리즘이다. 동일한 알고리즘이라고 하더라도 입력에 따라서 도출되는 시간이 다르다.
-따라서, 최상으로 판단하는 빅오메가의 경우는 의미없는 결과이며, 평균을 이용하는 빅세타의 경우에는 계산이 복잡하고, 알고리즘의 성능을 직접적으로 비교하기 쉽지 않다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h4&gt;빅오 표기법의 수학적 정의&lt;/h4&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;n ≥ n&lt;sub&gt;o&lt;/sub&gt;인 모든 n에 대해서 kg(n) ≥ f(n)인 양수 k, n&lt;sub&gt;o&lt;/sub&gt;이 존재하면,  f(n)=O(g(n))이라고 표기한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;../assets/built/images/time_complexity_bigo.png&quot; alt=&quot;알고리즘 사진&quot; width=&quot;40%&quot; height=&quot;40%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;충분히 큰 입력값 n을 넣었을때, 실행시간(running time) f(n)은 최악의 경우에도 점근 상한선을 넘을 수 없다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h4&gt;빅오 표기법의 성능 차이&lt;/h4&gt;
-&lt;ul class=&quot;data-contents&quot;&gt;
-&lt;br /&gt;
-    &lt;li&gt;Big(1) : 해결하는 과정이 하나인 성능 지표&lt;/li&gt;
-    &lt;li&gt;Big(logN) : 해결하는 과정이 입력 개수가 증가함에 따라 감소하는 성능 지표&lt;/li&gt;
-    &lt;li&gt;Big(N) : 해결 과정이 입력개수와 동일한 성능 지표&lt;/li&gt;
-    &lt;li&gt;Big(N&lt;sup&gt;2&lt;/sup&gt;) : 해결 과정이 입력값의 제곱에 비례하는 성능 지표&lt;/li&gt;
-    &lt;li&gt;Big(2&lt;sup&gt;N&lt;/sup&gt;) : 해결 과정이 입력의 지수승만큼 증가하는 성능 지표&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content><author><name>sanghyoson</name></author><category term="algorithm" /><summary type="html">  알고리즘이란?</summary></entry><entry><title type="html">프로그래머스 - 추석 트래픽(DP)</title><link href="http://localhost:4000/programmers-traffic" rel="alternate" type="text/html" title="프로그래머스 - 추석 트래픽(DP)" /><published>2021-11-04T21:40:00+09:00</published><updated>2021-11-04T21:40:00+09:00</updated><id>http://localhost:4000/programmers-traffic</id><content type="html" xml:base="http://localhost:4000/programmers-traffic">&lt;p&gt;&lt;i class=&quot;fa fa-search&quot;&gt; &lt;/i&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>sanghyoson</name></author><category term="programmers" /><category term="dp" /><summary type="html">  Dynamic Programming - N으로 표현</summary></entry><entry><title type="html">프로그래머스 - 추석 트래픽(DP)</title><link href="http://localhost:4000/programmers-traffic" rel="alternate" type="text/html" title="프로그래머스 - 추석 트래픽(DP)" /><published>2021-11-04T21:40:00+09:00</published><updated>2021-11-04T21:40:00+09:00</updated><id>http://localhost:4000/programmers-traffic</id><content type="html" xml:base="http://localhost:4000/programmers-traffic">&lt;p&gt;&lt;i class=&quot;fa fa-search&quot;&gt; &lt;/i&gt; 
 &lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/17676&quot;&gt; KAKAO 18' RECRUITMENT - [1차] 추석 트래픽&lt;/a&gt;
 &lt;img src=&quot;../assets/built/images/programmers_logo.jpg&quot; alt=&quot;프로그래머스 사진&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;&lt;/p&gt;
 
@@ -460,7 +662,69 @@ N을 n개를 이용하여 표현할 수 있는 수는 다음과 같이 구할 �
         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>sanghyoson</name></author><category term="programmers" /><category term="dp" /><summary type="html">  KAKAO 18' RECRUITMENT - [1차] 추석 트래픽</summary></entry><entry><title type="html">인터넷(3) - 브라우저와 작동 원리</title><link href="http://localhost:4000/roadmap-browser" rel="alternate" type="text/html" title="인터넷(3) - 브라우저와 작동 원리" /><published>2021-11-04T21:40:00+09:00</published><updated>2021-11-04T21:40:00+09:00</updated><id>http://localhost:4000/roadmap-browser</id><content type="html" xml:base="http://localhost:4000/roadmap-browser">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Backend Internet 내용은 다음과 같은 내용으로 구성된다. &lt;/span&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>sanghyoson</name></author><category term="programmers" /><category term="dp" /><summary type="html">  KAKAO 18' RECRUITMENT - [1차] 추석 트래픽</summary></entry><entry><title type="html">알고리즘 - 시간복잡도</title><link href="http://localhost:4000/algorithm-time-complexity" rel="alternate" type="text/html" title="알고리즘 - 시간복잡도" /><published>2021-11-04T21:40:00+09:00</published><updated>2021-11-04T21:40:00+09:00</updated><id>http://localhost:4000/algorithm-time-complexity</id><content type="html" xml:base="http://localhost:4000/algorithm-time-complexity">&lt;p&gt;&lt;i class=&quot;fa fa-search&quot;&gt; &lt;/i&gt; 
+&lt;a href=&quot;https://ko.wikipedia.org/wiki/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98&quot;&gt; 알고리즘이란? &lt;/a&gt;
+&lt;img src=&quot;../assets/built/images/algorithm.jpg&quot; alt=&quot;알고리즘 사진&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;&lt;/p&gt;
+
+&lt;h2&gt;알고리즘이란?&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt;
+시간복잡도의 필요성 및 개념을 알기 전, 알고리즘이 무엇인지에 대해서부터 이해가 필요했다. 사전적 의미의 알고리즘은 다음과 같다.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;알고리즘이란 어떠한 문제를 풀기위해서 정해진 일련의 절차 혹은 방법을 공식화한 형태로 표현한 것&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;조금 더 간단히 얘기하면, 어떠한 목적이 있고 이를 달성하기 위해서 거쳐야하는 과정이 존재하는데 이를 기술하는 것을 의미한다. 알고리즘 특성은 다음 조건들을 만족해야 한다.&lt;/p&gt;
+
+&lt;ul class=&quot;data-contents&quot;&gt;
+&lt;li&gt;입력 : 자료가 외부에서 하나 이상 제공되어야 한다.&lt;/li&gt;
+&lt;li&gt;출력 : 알고리즘의 결과로 하나 이상의 값이 도출되어야 한다.&lt;/li&gt;
+&lt;li&gt;유한성 : 알고리즘이 일정 작업이 지나면 종료되어야 한다. &lt;/li&gt;
+&lt;li&gt;명확성 : 명확한 작업과, 각 단계마다 명확한 다음 단계를 가져야한다. &lt;/li&gt;
+&lt;li&gt;효율성 : 실용적이여야 하며, 효율성이 높은 알고리즘일수록 가지가 높다. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;
+시간의 복잡도의 개념이 필요한 이유는 위에서 나열한 알고리즘 특성들 중 효율성과 관련이 있다. 효율성에서 볼 수 있듯, 같은 문제를 해결하는 알고리즘은은 여러 개가 존재하지만, 둘 중 효율적인 알고리즘이 더욱 우수한 알고리즘이라 할 수 있다. 효율적인 알고리즘(컴퓨터의 성능, 언어 등의 다른 변수가 동일하다면)일수록 컴퓨터가 빠르게 실행할 수 있다. 한편, 여러 알고리즘 중 효율적인 알고리즘이 무엇인지를 판단하기 위한 기준이 필요한데, 이때 필요한 개념이 시간복잡도와 공간복잡도이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h2&gt;시간복잡도&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt;
+일반적으로 알고리즘의 복잡도는 시간복잡도와 공간복잡도로 평가를 하지만, 시간복잡도를 더 중요하게 평가한다. 요즘 많은 하드웨어들의 발달로 대용량의 메모리를 사용하는 것이 허용되기 때문에 시간복잡도를 위주로 판단한다.&lt;/p&gt;
+
+&lt;h4&gt;복잡도 표기법&lt;/h4&gt;
+&lt;p&gt;&lt;br /&gt;
+시간 복잡도를 표현하는 알고리즘 표기법은 다음 세가지가 존재한다. 
+&lt;br /&gt;&lt;/p&gt;
+&lt;ul class=&quot;data-contents&quot;&gt;
+    &lt;li&gt;최상(Best)의 경우 : 빅오메가(Big-Omega) 표기법&lt;/li&gt;
+    &lt;li&gt;최악(Worst)의 경우 : 빅오(Big-O) 표기법&lt;/li&gt;
+    &lt;li&gt;평균(Average)의 경우 : 빅세타(Big-theta) 표기법&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;
+이 중 가장 일반적으로 판단하는 표기법은 최악의 경우로 판단하는 빅오 알고리즘이다. 동일한 알고리즘이라고 하더라도 입력에 따라서 도출되는 시간이 다르다.
+따라서, 최상으로 판단하는 빅오메가의 경우는 의미없는 결과이며, 평균을 이용하는 빅세타의 경우에는 계산이 복잡하고, 알고리즘의 성능을 직접적으로 비교하기 쉽지 않다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h4&gt;빅오 표기법의 수학적 정의&lt;/h4&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;n ≥ n&lt;sub&gt;o&lt;/sub&gt;인 모든 n에 대해서 kg(n) ≥ f(n)인 양수 k, n&lt;sub&gt;o&lt;/sub&gt;이 존재하면,  f(n)=O(g(n))이라고 표기한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;../assets/built/images/time_complexity_bigo.png&quot; alt=&quot;알고리즘 사진&quot; width=&quot;40%&quot; height=&quot;40%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;충분히 큰 입력값 n을 넣었을때, 실행시간(running time) f(n)은 최악의 경우에도 점근 상한선을 넘을 수 없다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h4&gt;빅오 표기법의 성능 차이&lt;/h4&gt;
+&lt;ul class=&quot;data-contents&quot;&gt;
+&lt;br /&gt;
+    &lt;li&gt;Big(1) : 해결하는 과정이 하나인 성능 지표&lt;/li&gt;
+    &lt;li&gt;Big(logN) : 해결하는 과정이 입력 개수가 증가함에 따라 감소하는 성능 지표&lt;/li&gt;
+    &lt;li&gt;Big(N) : 해결 과정이 입력개수와 동일한 성능 지표&lt;/li&gt;
+    &lt;li&gt;Big(N&lt;sup&gt;2&lt;/sup&gt;) : 해결 과정이 입력값의 제곱에 비례하는 성능 지표&lt;/li&gt;
+    &lt;li&gt;Big(2&lt;sup&gt;N&lt;/sup&gt;) : 해결 과정이 입력의 지수승만큼 증가하는 성능 지표&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content><author><name>sanghyoson</name></author><category term="algorithm" /><summary type="html">  알고리즘이란?</summary></entry><entry><title type="html">인터넷(3) - 브라우저와 작동 원리</title><link href="http://localhost:4000/roadmap-browser" rel="alternate" type="text/html" title="인터넷(3) - 브라우저와 작동 원리" /><published>2021-11-04T21:40:00+09:00</published><updated>2021-11-04T21:40:00+09:00</updated><id>http://localhost:4000/roadmap-browser</id><content type="html" xml:base="http://localhost:4000/roadmap-browser">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Backend Internet 내용은 다음과 같은 내용으로 구성된다. &lt;/span&gt;&lt;/p&gt;
 &lt;ul class=&quot;table-of-contents-list&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;./roadmap-internet&quot;&gt;인터넷 관련 내용(1) - 인터넷은 어떻게 작동하는가?&lt;/a&gt;&lt;/li&gt;              &lt;!-- 파일의 날짜 들어가면 안된다 --&gt;
     &lt;li&gt;&lt;a href=&quot;./roadmap-http&quot;&gt;인터넷 관련 내용(2) - HTTP가 무엇인가?&lt;/a&gt;&lt;/li&gt;
@@ -518,101 +782,4 @@ HTTP는 ASCII 메시지로 이루어진다.&lt;/p&gt;
     &lt;li&gt;3XX (Redirection) : 바료의 위치가 바뀌었음을 의미&lt;/li&gt;
     &lt;li&gt;4XX (요청 오류) : 클라이언트 측 오류&lt;/li&gt;
     &lt;li&gt;5XX (서버 오류) : 서버 측 오류&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>sanghyoson</name></author><category term="roadmap" /><category term="internet" /><summary type="html">Backend Internet 내용은 다음과 같은 내용으로 구성된다. 인터넷 관련 내용(1) - 인터넷은 어떻게 작동하는가? 인터넷 관련 내용(2) - HTTP가 무엇인가? 인터넷 관련 내용(3) - 브라우저와 작동 원리 인터넷 관련 내용(4) - DNS와 작동 원리 인터넷 관련 내용(5) - 도메인 네임은 무엇인가? 인터넷 관련 내용(6) - 호스팅은 무엇인가?</summary></entry><entry><title type="html">인터넷(2) - HTTP는 무엇인가?</title><link href="http://localhost:4000/roadmap-http" rel="alternate" type="text/html" title="인터넷(2) - HTTP는 무엇인가?" /><published>2021-10-12T21:40:00+09:00</published><updated>2021-10-12T21:40:00+09:00</updated><id>http://localhost:4000/roadmap-http</id><content type="html" xml:base="http://localhost:4000/roadmap-http">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Backend Internet 내용은 다음과 같은 내용으로 구성된다. &lt;/span&gt;&lt;/p&gt;
-&lt;ul class=&quot;table-of-contents-list&quot;&gt;
-    &lt;li&gt;&lt;a href=&quot;./roadmap-internet&quot;&gt;인터넷 관련 내용(1) - 인터넷은 어떻게 작동하는가?&lt;/a&gt;&lt;/li&gt;              &lt;!-- 파일의 날짜 들어가면 안된다 --&gt;
-    &lt;li&gt;&lt;a href=&quot;./roadmap-http&quot;&gt;인터넷 관련 내용(2) - HTTP가 무엇인가?&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./roadmap-browser&quot;&gt;인터넷 관련 내용(3) - 브라우저와 작동 원리&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./roadmap-dns&quot;&gt;인터넷 관련 내용(4) - DNS와 작동 원리&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./roadmap-domain-name&quot;&gt;인터넷 관련 내용(5) - 도메인 네임은 무엇인가?&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./roadmap-hosting&quot;&gt;인터넷 관련 내용(6) - 호스팅은 무엇인가?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;br /&gt;
-&lt;img src=&quot;../assets/built/images/internet.jpg&quot; alt=&quot;인터넷 사진&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;HTTP&lt;/strong&gt;(HyperText Transfer Protocol)의 약어로서 웹 상에서 정보를 주고받을 수 있는 &lt;strong&gt;프로토콜&lt;/strong&gt;이다. 텍스트 기반으로 이루어져 있으며 약속과 같은 통신 규약을 정하였기 때문에 이 규약에 맞추어 정보를 주고 받을 수 있게 된다.
-HTTP는 &lt;strong&gt;클라이언트&lt;/strong&gt;(Client)와 &lt;strong&gt;서버&lt;/strong&gt;(Server) 사이에 이루어지는 요청과 응답을 위한 프로토콜이다. 웹에서 클라이언트인 웹 브라우저(Web Browser)가 HTTP를 통해 서버에게 웹페이지(HTML, 그림 정보) 등을 요청하면, 서버는 이 요청에 응답하여 필요한 정보를 해당 정보를 필요로하는 사용자에게 전달한다. 비유적으로 설명을 하면, 우리가 물건을 구매할 때 클라이언트와 서버는 각각 우리와 점원이라고 생각할 수 있으며, 이때 구매하는 물건을 HTML이라는 정보라고 볼 수 있다. 물건을 요청하고 요청에 대한 응답을 HTTP라고 생각하면 이해가 쉽다.
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2&gt;메시지 포맷&lt;/h2&gt;
-&lt;p&gt;&lt;br /&gt;
-HTTP는 ASCII 메시지로 이루어진다.&lt;/p&gt;
-&lt;h4&gt;요청 메시지&lt;/h4&gt;
-&lt;p&gt;&lt;br /&gt;
-클라이언트가 서버에게 보내는 요청 메시지는 ‘요청 내용’, ‘헤더’, ‘빈줄’, ‘기타 내용’ 등을 포함한다.
-요청 내용 종류는 다음과 같은 것들이 있다.&lt;/p&gt;
-
-&lt;ul class=&quot;data-contents&quot;&gt;
-    &lt;li&gt;GET : 자료 요청&lt;/li&gt;
-    &lt;li&gt;POST : 자료 생성 요청&lt;/li&gt;
-    &lt;li&gt;PUT : 자료 수정 요청&lt;/li&gt;
-    &lt;li&gt;DELETE : 자료의 삭제 요청&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h4&gt;응답 메시지&lt;/h4&gt;
-&lt;p&gt;&lt;br /&gt;
-서버가 클라이언트에게 전송하는 메시지에는 ‘상태코드’, ‘헤더’, ‘빈줄’, ‘기타 내용’을 포함한다.
-요청 메시지와 달리 응답은 상태코드로 전송되며 상태 코드 종류는 다음과 같다.&lt;/p&gt;
-
-&lt;ul class=&quot;data-contents&quot;&gt;
-    &lt;li&gt;1XX (정보) : 정보 교환, 일부 요청을 받았음을 의미&lt;/li&gt;
-    &lt;li&gt;2XX (성공) : 데이터 전송이 성공적이거나, 수락되었음을 의미&lt;/li&gt;
-    &lt;li&gt;3XX (Redirection) : 바료의 위치가 바뀌었음을 의미&lt;/li&gt;
-    &lt;li&gt;4XX (요청 오류) : 클라이언트 측 오류&lt;/li&gt;
-    &lt;li&gt;5XX (서버 오류) : 서버 측 오류&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>sanghyoson</name></author><category term="roadmap" /><category term="internet" /><summary type="html">Backend Internet 내용은 다음과 같은 내용으로 구성된다. 인터넷 관련 내용(1) - 인터넷은 어떻게 작동하는가? 인터넷 관련 내용(2) - HTTP가 무엇인가? 인터넷 관련 내용(3) - 브라우저와 작동 원리 인터넷 관련 내용(4) - DNS와 작동 원리 인터넷 관련 내용(5) - 도메인 네임은 무엇인가? 인터넷 관련 내용(6) - 호스팅은 무엇인가?</summary></entry><entry><title type="html">인터넷(1) - 인터넷은 어떻게 작동하는가?</title><link href="http://localhost:4000/roadmap-internet" rel="alternate" type="text/html" title="인터넷(1) - 인터넷은 어떻게 작동하는가?" /><published>2021-10-11T01:40:00+09:00</published><updated>2021-10-11T01:40:00+09:00</updated><id>http://localhost:4000/roadmap-internet</id><content type="html" xml:base="http://localhost:4000/roadmap-internet">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Backend Internet 내용은 다음과 같은 내용으로 구성된다. &lt;/span&gt;&lt;/p&gt;
-&lt;ul class=&quot;table-of-contents-list&quot;&gt;
-    &lt;li&gt;&lt;a href=&quot;./roadmap-internet&quot;&gt;인터넷 관련 내용(1) - 인터넷은 어떻게 작동하는가?&lt;/a&gt;&lt;/li&gt;              &lt;!-- 파일의 날짜 들어가면 안된다 --&gt;
-    &lt;li&gt;&lt;a href=&quot;./roadmap-http&quot;&gt;인터넷 관련 내용(2) - HTTP가 무엇인가?&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./roadmap-browser&quot;&gt;인터넷 관련 내용(3) - 브라우저와 작동 원리&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./roadmap-dns&quot;&gt;인터넷 관련 내용(4) - DNS와 작동 원리&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./roadmap-domain-name&quot;&gt;인터넷 관련 내용(5) - 도메인 네임은 무엇인가?&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./roadmap-hosting&quot;&gt;인터넷 관련 내용(6) - 호스팅은 무엇인가?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;br /&gt;
-&lt;img src=&quot;../assets/built/images/internet.jpg&quot; alt=&quot;인터넷 사진&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;
-&lt;strong&gt;인터넷&lt;/strong&gt;(Internet)이란 International Network의 줄임말로 Web의 가장 핵심적인 기술이라고 할 수 있다. 
-기본적으로, 인터넷이란 무수히 많은 컴퓨터들이 통신할 수 있도록 하는 &lt;strong&gt;거대한 네트워크 통신망&lt;/strong&gt;이다.
-수많은 컴퓨터들이 통신하기 위해서 컴퓨터 &lt;strong&gt;TCP/IP&lt;/strong&gt;를 이용하는데 이 장에서는 인터넷이 기본적으로 어떻게 작동하는지만 다룬다.&lt;/p&gt;
-
-&lt;h3&gt;두 대의 컴퓨터로 이루어진 단순한 네트워크&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;../assets/built/images/internet_network_1_one2one.jpg&quot; alt=&quot;2대 컴퓨터&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;
-인터넷이라는 커다란 네트워크를 이해하기 전 아주 작은 네트워크에 대해서 먼저 이해를 하자. 
-서로 다른 두 대의 컴퓨터가 통신을 하기위해서는 서로의 컴퓨터가 물리적(Ethernet) 혹은 무선(WiFi, Bluetooth)으로 &lt;strong&gt;연결&lt;/strong&gt;되어 있어야 한다.&lt;/p&gt;
-
-&lt;h3&gt;N 대의 컴퓨터로 이루어진 단순한 네트워크&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;../assets/built/images/internet_network_2_multi2multi.jpg&quot; alt=&quot;N대 컴퓨터&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;
-두 대만의 컴퓨터로는 하나의 유선 케이블(무선도 동일)이 필요하다. 
-네트워크는 이렇게 간단하지 않으므로 N 대의 컴퓨터를 고려하자.
-각각의 컴퓨터를 모두 연결하려면 필요한 유선 케이블 수는 &lt;strong&gt;&lt;sub&gt;N&lt;/sub&gt;C&lt;sub&gt;2&lt;/sub&gt;&lt;/strong&gt;개이다. 
-단순하게 컴퓨터를 연결하는 방법으로는 인터넷이라는 거대한 네트워크를 구축하기에는 제약이 있다.&lt;/p&gt;
-
-&lt;h3&gt;라우터을 이용한 단순한 네트워크&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;../assets/built/images/internet_network_3_router.jpg&quot; alt=&quot;라우터 연결&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;
-직접적으로 연결하는 문제를 해결하기 위해 &lt;strong&gt;라우터&lt;/strong&gt;(Router)라는 소형 컴퓨터를 사용한다.
-여러대의 컴퓨터는 직접적으로 연결하는 것이 라우터에 연결된다.
-라우터는 중간 전달자 역할을 하는데, 각 컴퓨터가 보내려고 하는 데이터를 받아 보내려는 컴퓨터로 정확하게 전달한다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;사전적 의미의 라우터(Router)란 네트워크와 네트워크 간의 경로를 설정하고 빠른 길로 트래픽을 이끌어주는 장비.
-대표적인 기능은 네트워크 간의 연결이지만, NAT(Network Address Translation), 방화벽, VPN 등 부가 기능도 함께 제공한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;../assets/built/images/internet_network_4_router_expand.jpg&quot; alt=&quot;라우터 확장&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;
-컴퓨터를 확장하였듯 라우터도 확장이 가능하다.
-라우터를 확장하게 되면 앞서 언급한 네트워크들보다 훨씬 큰 네트워크를 구축할 수 있다.
-하지만, 라우터도 역시 한계는 존재한다. 
-우리의 목적을 위해 네트워크를 구축하였듯 다른 사람들도 다른 지역에서 라우터를 이용하여 새로운 네트워크를 구축할 수 있다.
-하지만 유선 케이블(무선 통신도 동일)을 먼 곳까지 모두 연결하는 것은 불가능하다.
-&lt;img src=&quot;../assets/built/images/internet_network_5_modem.jpg&quot; alt=&quot;모뎀 연결&quot; width=&quot;60%&quot; height=&quot;60%&quot; /&gt;
-이를 가능하도록 하는 무엇인가가 필요한데, 이미 구축하여 세계 여러 지역에서 사용하고 있는 전화라는 좋은 시스템을 이용할 수 있다.
-따라서, 이미 구축되어 있는 전화 시스템과 라우터를 이용하여 구축한 네트워크를 연결할 수 있는 &lt;strong&gt;모뎀&lt;/strong&gt;이라는 장비를 이용한다.
-모뎀을 통해서 인터넷 서비스 제공 업체(Internet Service Provider, &lt;strong&gt;ISP&lt;/strong&gt;)에 접근할 수 있고, ISP가 구축한 네트워크를 통해 접근하려는 대상 네트워크로 접근이 가능하게 된다.
-이러한 전체적인 네트워크 인프라로 인터넷은 구성된다.
-&lt;img src=&quot;../assets/built/images/internet_network_6_internet.jpg&quot; alt=&quot;인터넷 통신 네트워크&quot; width=&quot;200 %&quot; height=&quot;200%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h2&gt;참고 사이트&lt;/h2&gt;
-&lt;p&gt;   &lt;i class=&quot;fa fa-search&quot;&gt; &lt;/i&gt; 
-&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Learn/Common_questions/How_does_the_Internet_work&quot;&gt; MDN Web Docs &lt;/a&gt;&lt;/p&gt;</content><author><name>sanghyoson</name></author><category term="roadmap" /><category term="internet" /><summary type="html">Backend Internet 내용은 다음과 같은 내용으로 구성된다. 인터넷 관련 내용(1) - 인터넷은 어떻게 작동하는가? 인터넷 관련 내용(2) - HTTP가 무엇인가? 인터넷 관련 내용(3) - 브라우저와 작동 원리 인터넷 관련 내용(4) - DNS와 작동 원리 인터넷 관련 내용(5) - 도메인 네임은 무엇인가? 인터넷 관련 내용(6) - 호스팅은 무엇인가? 인터넷(Internet)이란 International Network의 줄임말로 Web의 가장 핵심적인 기술이라고 할 수 있다. 기본적으로, 인터넷이란 무수히 많은 컴퓨터들이 통신할 수 있도록 하는 거대한 네트워크 통신망이다. 수많은 컴퓨터들이 통신하기 위해서 컴퓨터 TCP/IP를 이용하는데 이 장에서는 인터넷이 기본적으로 어떻게 작동하는지만 다룬다.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>sanghyoson</name></author><category term="roadmap" /><category term="internet" /><summary type="html">Backend Internet 내용은 다음과 같은 내용으로 구성된다. 인터넷 관련 내용(1) - 인터넷은 어떻게 작동하는가? 인터넷 관련 내용(2) - HTTP가 무엇인가? 인터넷 관련 내용(3) - 브라우저와 작동 원리 인터넷 관련 내용(4) - DNS와 작동 원리 인터넷 관련 내용(5) - 도메인 네임은 무엇인가? 인터넷 관련 내용(6) - 호스팅은 무엇인가?</summary></entry></feed>
