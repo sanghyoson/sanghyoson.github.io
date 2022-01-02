@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/heap/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-01-01T22:20:06+09:00</updated>
+  <updated>2022-01-02T21:12:09+09:00</updated>
   <id>http://localhost:4000/tag/heap/feed.xml</id>
 
   
@@ -33,11 +33,11 @@
   
     <entry>
       <title type="html">프로그래머스 - 배상 비용 최소화 실습(Heap)</title>
-      <link href="http://localhost:4000/programmers-traffic" rel="alternate" type="text/html" title="프로그래머스 - 배상 비용 최소화 실습(Heap)" />
+      <link href="http://localhost:4000/programmers-compensation_minimization" rel="alternate" type="text/html" title="프로그래머스 - 배상 비용 최소화 실습(Heap)" />
       <published>2021-12-15T21:40:00+09:00</published>
       <updated>2021-12-15T21:40:00+09:00</updated>
-      <id>http://localhost:4000/programmers-traffic</id>
-      <content type="html" xml:base="http://localhost:4000/programmers-traffic">&lt;p&gt;&lt;i class=&quot;fa fa-search&quot;&gt; &lt;/i&gt; 
+      <id>http://localhost:4000/programmers-compensation_minimization</id>
+      <content type="html" xml:base="http://localhost:4000/programmers-compensation_minimization">&lt;p&gt;&lt;i class=&quot;fa fa-search&quot;&gt; &lt;/i&gt; 
 &lt;a href=&quot;https://programmers.co.kr/learn/courses/13213/lessons/91086&quot;&gt; Heap - 배상 비용 최소화 실습&lt;/a&gt;
 &lt;img src=&quot;../assets/built/images/programmers_logo.jpg&quot; alt=&quot;프로그래머스 사진&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;&lt;/p&gt;
 

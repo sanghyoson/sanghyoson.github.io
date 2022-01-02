@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/internet/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-01-01T22:20:06+09:00</updated>
+  <updated>2022-01-02T21:12:09+09:00</updated>
   <id>http://localhost:4000/tag/internet/feed.xml</id>
 
   
@@ -33,11 +33,11 @@
   
     <entry>
       <title type="html">인터넷(3) - 브라우저와 작동 원리</title>
-      <link href="http://localhost:4000/roadmap-browser" rel="alternate" type="text/html" title="인터넷(3) - 브라우저와 작동 원리" />
+      <link href="http://localhost:4000/XXXXXXXXXXroadmap-browser" rel="alternate" type="text/html" title="인터넷(3) - 브라우저와 작동 원리" />
       <published>2021-11-04T21:40:00+09:00</published>
       <updated>2021-11-04T21:40:00+09:00</updated>
-      <id>http://localhost:4000/roadmap-browser</id>
-      <content type="html" xml:base="http://localhost:4000/roadmap-browser">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Backend Internet 내용은 다음과 같은 내용으로 구성된다. &lt;/span&gt;&lt;/p&gt;
+      <id>http://localhost:4000/XXXXXXXXXXroadmap-browser</id>
+      <content type="html" xml:base="http://localhost:4000/XXXXXXXXXXroadmap-browser">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Backend Internet 내용은 다음과 같은 내용으로 구성된다. &lt;/span&gt;&lt;/p&gt;
 &lt;ul class=&quot;table-of-contents-list&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;./roadmap-internet&quot;&gt;인터넷 관련 내용(1) - 인터넷은 어떻게 작동하는가?&lt;/a&gt;&lt;/li&gt;              &lt;!-- 파일의 날짜 들어가면 안된다 --&gt;
     &lt;li&gt;&lt;a href=&quot;./roadmap-http&quot;&gt;인터넷 관련 내용(2) - HTTP가 무엇인가?&lt;/a&gt;&lt;/li&gt;

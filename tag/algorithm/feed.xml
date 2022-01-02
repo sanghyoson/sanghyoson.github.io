@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/algorithm/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-01-01T22:20:06+09:00</updated>
+  <updated>2022-01-02T21:12:09+09:00</updated>
   <id>http://localhost:4000/tag/algorithm/feed.xml</id>
 
   
@@ -33,11 +33,11 @@
   
     <entry>
       <title type="html">DFS, BFS의 구현 - 깊이 우선 탐색, 너비 우선 탐색</title>
-      <link href="http://localhost:4000/DFS_BFS" rel="alternate" type="text/html" title="DFS, BFS의 구현 - 깊이 우선 탐색, 너비 우선 탐색" />
+      <link href="http://localhost:4000/XXXXXXXXXXXXXXXDFS_BFS" rel="alternate" type="text/html" title="DFS, BFS의 구현 - 깊이 우선 탐색, 너비 우선 탐색" />
       <published>2021-12-03T21:40:00+09:00</published>
       <updated>2021-12-03T21:40:00+09:00</updated>
-      <id>http://localhost:4000/DFS_BFS</id>
-      <content type="html" xml:base="http://localhost:4000/DFS_BFS">&lt;p&gt;&lt;i class=&quot;fa fa-search&quot;&gt; &lt;/i&gt; 
+      <id>http://localhost:4000/XXXXXXXXXXXXXXXDFS_BFS</id>
+      <content type="html" xml:base="http://localhost:4000/XXXXXXXXXXXXXXXDFS_BFS">&lt;p&gt;&lt;i class=&quot;fa fa-search&quot;&gt; &lt;/i&gt; 
 &lt;a href=&quot;https://namu.wiki/w/DFS&quot;&gt; DFS? &lt;/a&gt;
 &lt;a href=&quot;https://namu.wiki/w/BFS&quot;&gt; BFS? &lt;/a&gt;
 &lt;img src=&quot;../assets/built/images/algorithm.jpg&quot; alt=&quot;알고리즘 사진&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;&lt;/p&gt;
