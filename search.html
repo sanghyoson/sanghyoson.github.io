@@ -183,12 +183,21 @@ into the {body} of the default.hbs template -->
 <script>
     window.store = {
     
-    "programmers-passport-contro": {
+    "programmers-the-farthest-node": {
+        "title": "프로그래머스 - 가장 먼 노드(BFS, DFS)",
+            "author": "sanghyoson",
+            "category": "",
+            "content": "   BFS, DFS - 가장 먼 노드문제 설명n개의 노드가 있는 그래프가 있습니다. 각 노드는 1부터 n까지 번호가 적혀있습니다. 1번 노드에서 가장 멀리 떨어진 노드의 갯수를 구하려고 합니다. 가장 멀리 떨어진 노드란 최단경로로 이동했을 때 간선의 개수가 가장 많은 노드들을 의미합니다.노드의 개수 n, 간선에 대한 정보가 담긴 2차원 배열 vertex가 매개변수로 주어질 때, 1번 노드로부터 가장 멀리 떨어진 노드가 몇 개인지를 return 하도록 solution 함수를 작성해주세요.입력 형식노드의 개수 n은 2 이상 20,000 이하입니다.간선은 양방향이며 총 1개 이상 50,000개 이하의 간선이 있습니다.vertex 배열 각 행 [a, b]는 a번 노드와 b번 노드 사이에 간선이 있다는 의미입니다.문제 풀이처음 시작하는 노드인 ‘1’에서부터 시작하여, 모든 노드를 탐색하여, 각 노드까지의 거리를 결정하여야 한다. 따라서 모든 탐색을 위한 BFS나 DFS가 필요하다고 판단했다. 다만, 가장 깊은 노드들의 집합을 알아 내는 것이 목표이므로 같은 깊이를 탐색하는 BFS가 DFS보다는 적합하다.    1. 배열로 주어진 데이터를 이용하여 그래프로 표현한다.    2. BFS를 이용하여 탐색을 시작하고, 탐색을 통해 거쳐가는 노드들의 깊이를 담은 배열을 구한다.    3. 탐색이 종료되면, 가장 거리가 먼 노드의 개수를 구한다.최종 코드function solution(n, edge) {    const graph = Array.from(        Array(n+1),        () =&gt; []    );        for (const [st, en] of edge){        graph[st].push(en);        graph[en].push(st);    }                       const distance = Array(n+1).fill(0);    distance[1] = 1;        const q = [1];    while (q.length &gt; 0){        const st = q.shift();        for (const en of graph[st]){            if (distance[en] === 0){                q.push(en);                distance[en] = distance[st] + 1;            }        }    }    const max = Math.max(...distance);    return distance.filter(x =&gt; x === max).length;}",
+        "url": "/programmers-The_Farthest_Node"
+    }
+    ,
+    
+    "programmers-passport-control": {
         "title": "프로그래머스 - 입국 심사(Binary Search)",
             "author": "sanghyoson",
             "category": "",
             "content": "   Binary Search - 입국심사문제 설명n명이 입국심사를 위해 줄을 서서 기다리고 있습니다. 각 입국심사대에 있는 심사관마다 심사하는데 걸리는 시간은 다릅니다.처음에 모든 심사대는 비어있습니다. 한 심사대에서는 동시에 한 명만 심사를 할 수 있습니다. 가장 앞에 서 있는 사람은 비어 있는 심사대로 가서 심사를 받을 수 있습니다. 하지만 더 빨리 끝나는 심사대가 있으면 기다렸다가 그곳으로 가서 심사를 받을 수도 있습니다.모든 사람이 심사를 받는데 걸리는 시간을 최소로 하고 싶습니다.입국심사를 기다리는 사람 수 n, 각 심사관이 한 명을 심사하는데 걸리는 시간이 담긴 배열 times가 매개변수로 주어질 때, 모든 사람이 심사를 받는데 걸리는 시간의 최솟값을 return 하도록 solution 함수를 작성해주세요.입력 형식입국심사를 기다리는 사람은 1명 이상 1,000,000,000명 이하입니다.각 심사관이 한 명을 심사하는데 걸리는 시간은 1분 이상 1,000,000,000분 이하입니다.심사관은 1명 이상 100,000명 이하입니다.문제 풀이최종적으로 소요되는 시간을 도출 해야한다. 다만, 제한사항에서 입국 심사를 받는 사람의 수(n)와 심사시간의 크기가 크기 때문에, 효율적으로 탐색해야 한다. 여기서는 이분 탐색으로 접근하였다. 해당 문제를 해결하기 위한 알고리즘 순서는 다음과 같다.    1. 이분 탐색을 위해서 (시간)데이터를 정렬한다.    2. left를 최소 시간인 1분, right를 최대 시간(최대 시간이란, 입국하는 모든 사람이 심사시간이 가장 긴 심사관에게 심사를 받는 경우)으로 결정한다.    3. 중간 시간일 떄, 심사받을 수 있는 사람이 n보다 큰지, 혹은 작은지를 판단하여 left(or right)를 변경한다.최종 코드function solution(n, times) {    const sortedTimes = times.sort((a,b) =&gt; a - b);    let left = 1;    let right = sortedTimes[sortedTimes.length - 1] * n;        while (left &lt;= right){        const mid = Math.floor((left+right)/2);        const sum = times.reduce((acc, time) =&gt; acc + Math.floor(mid / time),0);                if (sum &lt; n){            left = mid + 1;        } else {            right = mid - 1;        }    }        return left;}",
-        "url": "/programmers-Passport_contro"
+        "url": "/programmers-Passport_control"
     }
     ,
     
