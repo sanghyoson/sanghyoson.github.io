@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/programmers/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-01-03T22:53:41+09:00</updated>
+  <updated>2022-01-04T23:38:09+09:00</updated>
   <id>http://localhost:4000/tag/programmers/feed.xml</id>
 
   
@@ -30,6 +30,120 @@
   
   
 
+  
+    <entry>
+      <title type="html">프로그래머스 - 큰 수 만들기(Greedy)</title>
+      <link href="http://localhost:4000/programmers-Make_Biggest_number" rel="alternate" type="text/html" title="프로그래머스 - 큰 수 만들기(Greedy)" />
+      <published>2021-12-18T21:40:00+09:00</published>
+      <updated>2021-12-18T21:40:00+09:00</updated>
+      <id>http://localhost:4000/programmers-Make_Biggest_number</id>
+      <content type="html" xml:base="http://localhost:4000/programmers-Make_Biggest_number">&lt;p&gt;&lt;i class=&quot;fa fa-search&quot;&gt; &lt;/i&gt; 
+&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/42883?language=javascript&quot;&gt; Greedy - 큰 수 만들기&lt;/a&gt;
+&lt;img src=&quot;../assets/built/images/programmers_logo.jpg&quot; alt=&quot;프로그래머스 사진&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;&lt;/p&gt;
+
+&lt;h2&gt;문제 설명&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt;
+어떤 숫자에서 k개의 수를 제거했을 때 얻을 수 있는 가장 큰 숫자를 구하려 합니다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어, 숫자 1924에서 수 두 개를 제거하면 [19, 12, 14, 92, 94, 24] 를 만들 수 있습니다. 이 중 가장 큰 숫자는 94 입니다.&lt;/p&gt;
+
+&lt;p&gt;문자열 형식으로 숫자 number와 제거할 수의 개수 k가 solution 함수의 매개변수로 주어집니다. number에서 k 개의 수를 제거했을 때 만들 수 있는 수 중 가장 큰 숫자를 문자열 형태로 return 하도록 solution 함수를 완성하세요.
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2&gt;입력 형식&lt;/h2&gt;
+&lt;ul class=&quot;data-contents&quot;&gt;
+&lt;br /&gt;
+&lt;li&gt;number는 1자리 이상, 1,000,000자리 이하인 숫자입니다.&lt;/li&gt;
+&lt;li&gt;k는 1 이상 number의 자릿수 미만인 자연수입니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;!-- &lt;h2&gt;출력 형식&lt;/h2&gt;
+&lt;ul class = 'data-contents'&gt;
+&lt;br/&gt;
+&lt;li&gt;solution 함수에서는 로그 데이터 lines 배열에 대해 초당 최대 처리량을 리턴한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br/&gt; --&gt;
+
+&lt;h2&gt;문제 풀이&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt;
+문제에서 주어진 k개를 삭제하여, 큰 수를 만드는 문제이다. 탐욕법(Greedy)을 이용하여 접근하면 쉽게 접근이 가능하다. 핵심은, 수의 맨 앞에서부터 작은 수를 차례로 제거하면 된다.&lt;/p&gt;
+
+&lt;ol class=&quot;data-contents&quot;&gt;
+    &lt;li&gt;1. number의 맨 앞의 자리의 수를 임시로 데이터를 저장하는 stack에 저장한다.&lt;/li&gt;
+    &lt;li&gt;2. stack 데이터와 number의 다음 자리수를 비교하는데, stack 내의 데이터가 작으면 이를 제거하고 카운트를 증가시키고 그렇지 않으면 stack에 그 number의 그 다음자리를 저장한다.&lt;/li&gt;
+    &lt;li&gt;3. 위를 반복하여, 카운터가 k와 같으면 알고리즘을 종료하고 stack과 남은 number를 이어붙여 return한다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;br /&gt;
+    JS에서는 제공하지 않는 큐를 사용하였는데, deque를 사용하는 것이 번거로워 reverse()한 후, pop()을 사용하였다.&lt;/p&gt;
+
+&lt;!-- &lt;h4&gt;풀이과정 - 문자열로부터 시작, 종료 시간 파싱하기&lt;/h4&gt;
+&lt;br/&gt;
+문자열로부터 원하는 숫자를 뽑아내는 파싱 과정 통해서 각 로그 데이터의 시작, 종료 시간을 구하는 것은 간단하다. 종료 시간에서 데이터 처리 시간을 빼면 시작 시간을 구할 수 있다. 다만, 해당 문제에서의 **핵심은 기본 환산단위를 ms로 변경**하는 과정인 것 같다.
+문제 자체를 해결함에 있어서는 ms로의 환산이 크게 중요하지 않지만, 소수점으로 인해서 연산 중 오차가 발생하는 것을 확인하였다. (소수점 연산 속도 차이도 있을 것 같다.)  --&gt;
+
+&lt;!-- &lt;h4&gt;풀이과정 2 - 시간 포인트(시작, 종료시간)에서 오버랩되는 데이터의 수 카운트하기&lt;/h4&gt;
+&lt;br/&gt;
+초기 접근 방법은 1초간의 윈도우를 슬라이딩하며 각 윈도우에서 오버랩되는 데이터 수를 카운트하는 방법이었다. 해당 방법으로 원하는 결과를 얻을 수는 있지만, 효율성 측면에서 매우 떨어진다. 해당 **문제의 기본 시간 단위는 ms**이므로, 1초 동안 슬라이딩을 진행하여도 최소 1000번의 알고리즘이 진행되게 되고, 오버랩되는 카운터를 고려한다면 알고리즘 진행 시간은 더욱 늘어난다. 제안한 알고리즘의 **요청량이 변화하는 시점은 로그의 시작점, 종료점** 뿐이라는 점을 이용한다. 요청량이 변화는 전체 로그에서 시작, 종료점에서만 발생하므로, 해당 지점에서의 최대 요청량을 구하면, 전체 로그의 최대 요청량을 구할 수 있다. 따라서, 전체 시간을 슬라이딩 시키지 않고, 로그 시작, 종료점에서만 진행하여 구하였다.
+&lt;br/&gt; --&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2&gt;최종 코드&lt;/h2&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cnt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reverse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;stack&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cnt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;cnt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]){&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;cnt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reverse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>sanghyoson</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="programmers" />
+      
+        <category term="greedy" />
+      
+
+      
+        <summary type="html">  Greedy - 큰 수 만들기</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">프로그래머스 - 가장 먼 노드(BFS, DFS)</title>
@@ -135,7 +249,7 @@ n개의 노드가 있는 그래프가 있습니다. 각 노드는 1부터 n까�
       
         <category term="programmers" />
       
-        <category term="binary search" />
+        <category term="dfs bfs" />
       
 
       
@@ -1127,108 +1241,6 @@ DP를 이용해서 접근했다. 단순하게 반복문을 이용해서 구할 �
 
       
         <summary type="html">  Queue / Stack - 올바른 괄호</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">프로그래머스 - N개의 최소 공배수(Queue, Stack)</title>
-      <link href="http://localhost:4000/programmers-N_LCM-copy" rel="alternate" type="text/html" title="프로그래머스 - N개의 최소 공배수(Queue, Stack)" />
-      <published>2021-11-06T21:40:00+09:00</published>
-      <updated>2021-11-06T21:40:00+09:00</updated>
-      <id>http://localhost:4000/programmers-N_LCM%20copy</id>
-      <content type="html" xml:base="http://localhost:4000/programmers-N_LCM-copy">&lt;p&gt;&lt;i class=&quot;fa fa-search&quot;&gt; &lt;/i&gt; 
-&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/12953&quot;&gt; Queue / Stack - N개의 최소 공배수&lt;/a&gt;
-&lt;img src=&quot;../assets/built/images/programmers_logo.jpg&quot; alt=&quot;프로그래머스 사진&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;&lt;/p&gt;
-
-&lt;h2&gt;문제 설명&lt;/h2&gt;
-&lt;p&gt;&lt;br /&gt;
-두 수의 최소공배수(Least Common Multiple)란 입력된 두 수의 배수 중 공통이 되는 가장 작은 숫자를 의미합니다. 예를 들어 2와 7의 최소공배수는 14가 됩니다. 정의를 확장해서, n개의 수의 최소공배수는 n 개의 수들의 배수 중 공통이 되는 가장 작은 숫자가 됩니다. n개의 숫자를 담은 배열 arr이 입력되었을 때 이 수들의 최소공배수를 반환하는 함수, solution을 완성해 주세요.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2&gt;제한 사항&lt;/h2&gt;
-&lt;ul class=&quot;data-contents&quot;&gt;
-&lt;br /&gt;
-&lt;li&gt;arr은 길이 1이상, 15이하인 배열입니다.&lt;/li&gt;
-&lt;li&gt;arr의 원소는 100 이하인 자연수입니다.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;!-- &lt;h2&gt;출력 형식&lt;/h2&gt;
-&lt;ul class = 'data-contents'&gt;
-&lt;br/&gt;
-&lt;li&gt;solution 함수에서는 로그 데이터 lines 배열에 대해 초당 최대 처리량을 리턴한다.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;br/&gt; 
-
-&lt;h2&gt;문제 풀이&lt;/h2&gt;
-&lt;br/&gt;
-N을 최소한으로 이용하여 number를 구해야 하는데, **동일한 개수의 N을 가지고 표현할 수 있는 수는 매우 많다**. 접근방법은 N의 개수를 늘려가며 표현할 수 있는 수를 빈틈없이 계산하고 이 값들 중에서 number가 포함되는지 확인하는 것이다.
-&lt;ol class = 'data-contents'&gt;
-    &lt;li&gt;1. n개의 N을 이용하여 구할 수 있는 수 나열&lt;/li&gt;
-    &lt;li&gt;2. 나열된 수 중 number가 존재하는 확인&lt;/li&gt;
-&lt;/ol&gt;
-&lt;br/&gt;
---&gt;
-
-&lt;h2&gt;풀이과정&lt;/h2&gt;
-&lt;p&gt;&lt;br /&gt;
-두 수의 최소 공배수(Least Common Multiple, &lt;strong&gt;LCM&lt;/strong&gt;)를 구하는 방법은 두 수의 곱을 최대 공약수(Greatest Common Divisor)로 나눈 것과 같다. N개의 최소 공배수를 구하는 접근 방법은 다음과 같다.&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;a&lt;sub&gt;1&lt;/sub&gt;, a&lt;sub&gt;2&lt;/sub&gt;, a&lt;sub&gt;3&lt;/sub&gt;,  …. a&lt;sub&gt;N&lt;/sub&gt; : N 개의 수&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ol class=&quot;data-contents&quot;&gt;
-    &lt;li&gt;1. a&lt;sub&gt;1&lt;/sub&gt;, a&lt;sub&gt;2&lt;/sub&gt;의 LCM인 a&lt;sup&gt;`&lt;/sup&gt;&lt;sub&gt;1&lt;/sub&gt;를 구한다.&lt;/li&gt;
-    &lt;li&gt;2. a&lt;sup&gt;`&lt;/sup&gt;&lt;sub&gt;1&lt;/sub&gt;과 a&lt;sub&gt;3&lt;/sub&gt;의 LCM인 a&lt;sup&gt;`&lt;/sup&gt;&lt;sub&gt;2&lt;/sub&gt;를 구한다.&lt;/li&gt;
-    &lt;li&gt;3. a&lt;sup&gt;`&lt;/sup&gt;&lt;sub&gt;m&lt;/sub&gt;인 하나의 수가 남도록 위를 반복한다.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2&gt;최종 코드&lt;/h2&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;collections&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deque&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dq&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;gcd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;popleft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;popleft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gcd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>sanghyoson</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="programmers" />
-      
-        <category term="queue" />
-      
-        <category term="stack" />
-      
-
-      
-        <summary type="html">  Queue / Stack - N개의 최소 공배수</summary>
       
 
       

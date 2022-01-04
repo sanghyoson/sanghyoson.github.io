@@ -183,6 +183,15 @@ into the {body} of the default.hbs template -->
 <script>
     window.store = {
     
+    "programmers-make-biggest-number": {
+        "title": "프로그래머스 - 큰 수 만들기(Greedy)",
+            "author": "sanghyoson",
+            "category": "",
+            "content": "   Greedy - 큰 수 만들기문제 설명어떤 숫자에서 k개의 수를 제거했을 때 얻을 수 있는 가장 큰 숫자를 구하려 합니다.예를 들어, 숫자 1924에서 수 두 개를 제거하면 [19, 12, 14, 92, 94, 24] 를 만들 수 있습니다. 이 중 가장 큰 숫자는 94 입니다.문자열 형식으로 숫자 number와 제거할 수의 개수 k가 solution 함수의 매개변수로 주어집니다. number에서 k 개의 수를 제거했을 때 만들 수 있는 수 중 가장 큰 숫자를 문자열 형태로 return 하도록 solution 함수를 완성하세요.입력 형식number는 1자리 이상, 1,000,000자리 이하인 숫자입니다.k는 1 이상 number의 자릿수 미만인 자연수입니다.문제 풀이문제에서 주어진 k개를 삭제하여, 큰 수를 만드는 문제이다. 탐욕법(Greedy)을 이용하여 접근하면 쉽게 접근이 가능하다. 핵심은, 수의 맨 앞에서부터 작은 수를 차례로 제거하면 된다.    1. number의 맨 앞의 자리의 수를 임시로 데이터를 저장하는 stack에 저장한다.    2. stack 데이터와 number의 다음 자리수를 비교하는데, stack 내의 데이터가 작으면 이를 제거하고 카운트를 증가시키고 그렇지 않으면 stack에 그 number의 그 다음자리를 저장한다.    3. 위를 반복하여, 카운터가 k와 같으면 알고리즘을 종료하고 stack과 남은 number를 이어붙여 return한다.    JS에서는 제공하지 않는 큐를 사용하였는데, deque를 사용하는 것이 번거로워 reverse()한 후, pop()을 사용하였다.최종 코드function solution(number, k) {    let cnt = 0;    let arr = number.split('');    arr.reverse();    let stack = [];    while (cnt &lt; k){        if (stack.length == 0){            stack.push(arr.pop());        }                if (arr.length == 0){            stack.pop();            cnt += 1;        }        if (stack[stack.length-1] &lt; arr[arr.length-1]){            stack.pop();            cnt += 1;        } else {            stack.push(arr.pop());        }    }        arr.reverse();    return [...stack, ...arr].join('');}",
+        "url": "/programmers-Make_Biggest_number"
+    }
+    ,
+    
     "programmers-the-farthest-node": {
         "title": "프로그래머스 - 가장 먼 노드(BFS, DFS)",
             "author": "sanghyoson",
