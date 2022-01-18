@@ -8,6 +8,40 @@
     
       
       <item>
+        <title>프로그래머스 - 네트워크(BFS, DFS)</title>
+        
+          <description>&lt;p&gt;&lt;i class=&quot;fa fa-search&quot;&gt; &lt;/i&gt; 
+&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/43162?language=javascript&quot;&gt; BFS, DFS - 네트워크&lt;/a&gt;
+&lt;img src=&quot;../assets/built/images/programmers_logo.jpg&quot; alt=&quot;프로그래머스 사진&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Tue, 28 Dec 2021 21:40:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/programmers-Network</link>
+        <guid isPermaLink="true">http://localhost:4000/programmers-Network</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>프로그래머스 - 소수 찾기 (Recursion)</title>
+        
+          <description>&lt;p&gt;&lt;i class=&quot;fa fa-search&quot;&gt; &lt;/i&gt; 
+&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/42839?language=javascript&quot;&gt; Recursion - 소수 찾기&lt;/a&gt;
+&lt;img src=&quot;../assets/built/images/programmers_logo.jpg&quot; alt=&quot;프로그래머스 사진&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Thu, 23 Dec 2021 21:40:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/programmers-Find_Prime</link>
+        <guid isPermaLink="true">http://localhost:4000/programmers-Find_Prime</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>프로그래머스 - 압축 (Queue, Stack)</title>
         
           <description>&lt;p&gt;&lt;i class=&quot;fa fa-search&quot;&gt; &lt;/i&gt; 
@@ -122,6 +156,23 @@
         <link>
         http://localhost:4000/programmers-The_Farthest_Node</link>
         <guid isPermaLink="true">http://localhost:4000/programmers-The_Farthest_Node</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>프로그래머스 - 위장(Hash)</title>
+        
+          <description>&lt;p&gt;&lt;i class=&quot;fa fa-search&quot;&gt; &lt;/i&gt; 
+&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/42578&quot;&gt; Hash - 위장&lt;/a&gt;
+&lt;img src=&quot;../assets/built/images/programmers_logo.jpg&quot; alt=&quot;프로그래머스 사진&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Thu, 16 Dec 2021 21:40:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/programmers-Camouflage</link>
+        <guid isPermaLink="true">http://localhost:4000/programmers-Camouflage</guid>
       </item>
       
     
